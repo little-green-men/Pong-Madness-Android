@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Pong Madness.iml" filepath="$PROJECT_DIR$/Pong Madness.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pong-Madness-Android.iml" filepath="$PROJECT_DIR$/Pong-Madness-Android.iml" />
     </modules>
   </component>
 </project>
