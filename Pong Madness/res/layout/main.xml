@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/lobby_layout_main"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="@drawable/background">
+
+    <LinearLayout android:id="@+id/lobby_linearlayout_singledouble"
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:gravity="center_vertical"
+                  android:orientation="vertical"
+                  android:visibility="invisible"
+            >
+        <Button
+                android:id="@+id/lobby_button_single"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Single"
+                android:textSize="30dp"
+                android:background="@drawable/btn_gametype"/>
+
+        <Button
+                android:id="@+id/lobby_button_double"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Double"
+                android:textSize="30dp"
+                android:background="@drawable/btn_gametype"/>
+
+    </LinearLayout>
+<LinearLayout
+    android:id="@+id/lobby_layout_paddles"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    >
+    <ImageButton
+            android:id="@+id/lobby_imageview_quickgame"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/paddle_quickgame"
+            android:background="@android:color/transparent"/>
+    <ImageButton
+            android:id="@+id/lobby_imageview_knockout"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/paddle_knockout"
+            android:background="@android:color/transparent"/>
+    <ImageButton
+            android:id="@+id/lobby_imageview_leaderboard"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/paddle_leaderboard"
+            android:background="@android:color/transparent"/>
+    <ImageButton
+            android:id="@+id/lobby_imageview_theplayers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/paddle_theplayers"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+    <FrameLayout android:id="@+id/lobby_framelayout_fullscreen"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent">
+    </FrameLayout>
+</FrameLayout>
