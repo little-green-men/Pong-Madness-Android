@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Pong-Madness-Android.iml" filepath="$PROJECT_DIR$/Pong-Madness-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PongModelGenerator/PongModelGenerator.iml" filepath="$PROJECT_DIR$/PongModelGenerator/PongModelGenerator.iml" />
     </modules>
   </component>
 </project>
