@@ -1,9 +1,8 @@
-package com.example.Pong_Madness;
+package com.littleGreenMan.Pong_Madness;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.animation.*;
@@ -233,6 +232,7 @@ public class Lobby extends Activity implements View.OnClickListener {
                 rotationSuite.setDuration(200);
                 view.startAnimation(rotationSuite);
             }
+
 
             @Override
             public void onAnimationRepeat(Animation animation) {

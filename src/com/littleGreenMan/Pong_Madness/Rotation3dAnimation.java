@@ -1,4 +1,4 @@
-package com.example.Pong_Madness;
+package com.littleGreenMan.Pong_Madness;
 
 import android.graphics.Camera;
 import android.graphics.Matrix;

@@ -1,4 +1,4 @@
-package com.example.Pong_Madness;
+package com.littleGreenMan.Pong_Madness;
 
 import android.content.Context;
 import android.graphics.Typeface;
