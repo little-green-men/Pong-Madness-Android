@@ -1,6 +1,7 @@
 package com.littleGreenMan.Pong_Madness;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -56,6 +57,7 @@ public class Lobby extends Activity implements View.OnClickListener {
         //Add listener
         quickgameImageView.setOnClickListener(this);
         fullScreenFramelayout.setOnClickListener(this);
+        singleButton.setOnClickListener(this);
 
         //Add listener to know modify layout
         ViewTreeObserver observer = mainLayout.getViewTreeObserver();
@@ -80,7 +82,8 @@ public class Lobby extends Activity implements View.OnClickListener {
             makeButtonAppear();
             fullScreenFramelayout.bringToFront();
         } else if (v.getId() == R.id.lobby_button_single) {
-
+             Intent intent = new Intent(this, ThePlayers.class);
+            startActivity(intent);
         } else if (v.getId() == R.id.lobby_button_double) {
 
         } else if (v.getId() == R.id.lobby_framelayout_fullscreen) {
@@ -121,7 +124,7 @@ public class Lobby extends Activity implements View.OnClickListener {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                //buttonsLayout.bringToFront();
+                buttonsLayout.bringToFront();
             }
 
             @Override
