@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- the players-->
+    <dimen name="theplayers_marging_edittext">5dp</dimen>
+    <dimen name="theplayers_height_addplayer">226dp</dimen>
+    <dimen name="theplayers_width_addplayer">176dp</dimen>
+
+    <!-- cell player-->
+    <dimen name="cellplayer_textsize_name">18dp</dimen>
+    <dimen name="cellplayer_textsize_date">10dp</dimen>
+</resources>
