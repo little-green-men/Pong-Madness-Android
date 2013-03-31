@@ -4,13 +4,22 @@ import android.animation.LayoutTransition;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import com.littleGreenMan.Pong_Madness.Widget.CellAddPlayer;
 import com.littleGreenMan.Pong_Madness.Widget.CellPlayer;
+import com.littleGreenMan.Pong_Madness.Widget.PlayerDialogFragment;
+import com.littleGreenMan.Pong_Madness.client.PlayerClient;
+import com.littleGreenMan.Pong_Madness.model.Player;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,7 +28,7 @@ import com.littleGreenMan.Pong_Madness.Widget.CellPlayer;
  * Time: 12:20 PM
  * To change this template use File | Settings | File Templates.
  */
-public class ThePlayers extends Activity {
+public class ThePlayers extends FragmentActivity {
 
     ViewGroup container = null;
 
@@ -36,27 +45,40 @@ public class ThePlayers extends Activity {
 
         ViewGroup parent = (ViewGroup) findViewById(R.id.theplayers_layout_main);
 
-        /*LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View mainLayout = inflater.inflate(R.layout.cell_add_player, container);
-        */
         parent.addView(container);
-        CellPlayer addPlayer = new CellPlayer(ThePlayers.this);
+        final CellAddPlayer addPlayer = new CellAddPlayer(ThePlayers.this);
 
         container.addView(addPlayer , Math.min(0, container.getChildCount()));
 
 
-       addPlayer.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                CellPlayer newPlayer = new CellPlayer(ThePlayers.this);
-                newPlayer.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        //container.removeView(v);
-                    }
-                });
-                container.addView(newPlayer, Math.min(1, container.getChildCount()));
-            }
-        });
+       addPlayer.setClickListenerToAddplayer(new View.OnClickListener() {
+           public void onClick(View v) {
 
-        //To change body of overridden methods use File | Settings | File Templates.
+               //Today date
+               Calendar cal = Calendar.getInstance();
+               SimpleDateFormat format = new SimpleDateFormat("MM/dd/yy");
+               Date today = new Date(cal.getTimeInMillis());
+               String dateFormated = format.format(today);
+
+               //New player creation
+               final Player newPlayer = new Player();
+               newPlayer.setUserName(addPlayer.getEditTextName());
+               newPlayer.setSinceDate(dateFormated);
+
+               PlayerClient.addPlayerWithName(newPlayer);
+               CellPlayer newPlayerCell = new CellPlayer(ThePlayers.this);
+               newPlayerCell.setName(addPlayer.getEditTextName());
+               newPlayerCell.setSinceDate(dateFormated);
+
+               newPlayerCell.setOnClickListener(new View.OnClickListener() {
+                   public void onClick(View v) {
+                       PlayerDialogFragment dialog = PlayerDialogFragment.newInstance(ThePlayers.this);
+                       dialog.setPlayer(newPlayer);
+                       dialog.show(getSupportFragmentManager(), "player");
+                   }
+               });
+               container.addView(newPlayerCell, Math.min(1, container.getChildCount()));
+           }
+       });
     }
 }
