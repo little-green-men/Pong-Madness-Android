@@ -4,10 +4,10 @@ import android.content.Context;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.*;
-import com.littleGreenMan.Pong_Madness.FontTools;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.littleGreenMan.Pong_Madness.R;
-import org.apache.http.conn.EofSensorInputStream;
 
 /**
  * Created with IntelliJ IDEA.

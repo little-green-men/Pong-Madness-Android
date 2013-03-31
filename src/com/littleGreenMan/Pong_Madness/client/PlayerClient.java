@@ -3,10 +3,6 @@ package com.littleGreenMan.Pong_Madness.client;
 import com.littleGreenMan.Pong_Madness.DatabaseManager;
 import com.littleGreenMan.Pong_Madness.model.Player;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 /**
  * Created with IntelliJ IDEA.
  * User: elodieferrais

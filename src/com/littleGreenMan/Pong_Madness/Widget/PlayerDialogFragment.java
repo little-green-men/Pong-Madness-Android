@@ -1,13 +1,12 @@
 package com.littleGreenMan.Pong_Madness.Widget;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.view.*;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.*;
 import com.littleGreenMan.Pong_Madness.R;
 import com.littleGreenMan.Pong_Madness.client.PlayerClient;

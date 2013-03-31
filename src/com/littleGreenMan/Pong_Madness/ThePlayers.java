@@ -1,16 +1,10 @@
 package com.littleGreenMan.Pong_Madness;
 
 import android.animation.LayoutTransition;
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import com.littleGreenMan.Pong_Madness.Widget.CellAddPlayer;
 import com.littleGreenMan.Pong_Madness.Widget.CellPlayer;
 import com.littleGreenMan.Pong_Madness.Widget.PlayerDialogFragment;
