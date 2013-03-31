@@ -88,6 +88,11 @@ public class PlayerStat extends LinearLayout {
         losses.setTypeface(FontTools.getTypefaceFromRessource(R.raw.brothers_bold, context));
         points.setTypeface(FontTools.getTypefaceFromRessource(R.raw.brothers_bold, context));
         played.setTypeface(FontTools.getTypefaceFromRessource(R.raw.brothers_bold, context));
+        rankTitle.setTypeface(FontTools.getTypefaceFromRessource(R.raw.brothers_bold,context));
+        winsTitle.setTypeface(FontTools.getTypefaceFromRessource(R.raw.brothers_bold, context));
+        lossesTitle.setTypeface(FontTools.getTypefaceFromRessource(R.raw.brothers_bold, context));
+        pointsTitle.setTypeface(FontTools.getTypefaceFromRessource(R.raw.brothers_bold, context));
+        playedTitle.setTypeface(FontTools.getTypefaceFromRessource(R.raw.brothers_bold, context));
 
     }
 
