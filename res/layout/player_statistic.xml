@@ -57,6 +57,7 @@
                     android:textColor="@color/player_startdate"
                     android:layout_gravity="center"
                     android:text="Rank"
+                    android:textSize="12dp"
                     />
         </LinearLayout>
         <LinearLayout android:layout_width="45dp"
@@ -74,6 +75,7 @@
                     android:layout_width="wrap_content"
                     android:textColor="@color/player_startdate"
                     android:layout_gravity="center"
+
                     />
             <TextView
                     android:id="@+id/player_stat_textview_winstitle"
@@ -81,6 +83,7 @@
                     android:layout_width="wrap_content"
                     android:textColor="@color/player_startdate"
                     android:layout_gravity="center"
+                    android:textSize="12dp"
                     android:text="Wins"
                     />
         </LinearLayout>
@@ -106,6 +109,7 @@
                     android:layout_width="wrap_content"
                     android:textColor="@color/player_startdate"
                     android:layout_gravity="center"
+                    android:textSize="12dp"
                     android:text="Losses"
                     />
         </LinearLayout>
@@ -131,6 +135,7 @@
                     android:layout_width="wrap_content"
                     android:textColor="@color/player_startdate"
                     android:layout_gravity="center"
+                    android:textSize="12dp"
                     android:text="Played"
                     />
         </LinearLayout>
@@ -157,6 +162,7 @@
                     android:textColor="@color/player_startdate"
                     android:layout_gravity="center"
                     android:text="Points"
+                    android:textSize="12dp"
                     />
         </LinearLayout>
         <ImageView android:layout_width="45dp"

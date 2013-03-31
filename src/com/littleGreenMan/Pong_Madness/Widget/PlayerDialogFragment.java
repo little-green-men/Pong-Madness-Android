@@ -29,6 +29,7 @@ public class PlayerDialogFragment extends DialogFragment implements View.OnClick
     private ImageView righthand;
     private EditText company;
     private EditText email;
+    private PlayerStat playerStat;
 
     private LinearLayout lytToSave;
     private LinearLayout lytToEdit;
@@ -58,8 +59,11 @@ public class PlayerDialogFragment extends DialogFragment implements View.OnClick
         lytToSave = (LinearLayout) v.findViewById(R.id.player_dialog_layout_tosave);
         email = (EditText) v.findViewById(R.id.player_dialog_edittext_mail);
         company = (EditText) v.findViewById(R.id.player_dialog_edittext_company);
-
+        playerStat = (PlayerStat) v.findViewById(R.id.player_dialog_playerstat);
         viewSwitcher = (ViewSwitcher) v.findViewById(R.id.player_dialog_switcher);
+
+        playerStat.setPlayerAndUpdate(player);
+
         edit.setOnClickListener(this);
         save.setOnClickListener(this);
         lefthand.setOnClickListener(this);

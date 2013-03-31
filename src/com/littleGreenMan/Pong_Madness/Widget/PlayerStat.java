@@ -44,15 +44,15 @@ public class PlayerStat extends LinearLayout {
     private void update() {
         name.setText(player.getUserName());
 
-        rank.setText(PlayerClient.getRankOfPlayer(player));
-        wins.setText(PlayerClient.getWinsOfPlayer(player));
-        losses.setText(PlayerClient.getLossesOfPlayer(player));
-        points.setText(PlayerClient.getPointsOfPlayer(player));
-        played.setText(PlayerClient.getPlayedOfPlayer(player));
+        rank.setText(String.valueOf(PlayerClient.getRankOfPlayer(player)));
+        wins.setText(String.valueOf(PlayerClient.getWinsOfPlayer(player)));
+        losses.setText(String.valueOf(PlayerClient.getLossesOfPlayer(player)));
+        points.setText(String.valueOf(PlayerClient.getPointsOfPlayer(player)));
+        played.setText(String.valueOf(PlayerClient.getPlayedOfPlayer(player)));
 
-        if(player.getHandedness().equals("L")) {
+        if("L".equals(player.getHandedness())) {
             hand.setBackgroundDrawable(getResources().getDrawable(R.drawable.edit_handedness_left_active));
-        } else if (player.getHandedness().equals("R")) {
+        } else if ("R".equals(player.getHandedness())) {
             hand.setBackgroundDrawable(getResources().getDrawable(R.drawable.edit_handedness_right_active));
         }
     }
