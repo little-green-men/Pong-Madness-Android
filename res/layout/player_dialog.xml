@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="556dip"
+        android:layout_width="540dip"
+        >
+<ImageView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:src="@drawable/background"
+    android:scaleType="centerCrop"/>
+
+<LinearLayout
+              android:orientation="vertical"
+              android:layout_height="match_parent"
+              android:layout_width="match_parent"
+        >
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/navbar_background"
+    >
+            <Button android:id="@+id/player_dialog_button_edit"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/navbar_button"
+                    android:text="Edit"
+            />
+
+            <Button android:id="@+id/player_dialog_button_save"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/navbar_button"
+                android:text="Save"
+                android:visibility="gone"
+                />
+    </FrameLayout>
+
+    <ViewSwitcher android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:id="@+id/player_dialog_switcher"
+    android:inAnimation="@android:anim/fade_in"
+    android:outAnimation="@android:anim/fade_out"
+    >
+
+    <LinearLayout
+            android:id="@+id/player_dialog_layout_toedit"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+    >
+        <com.littleGreenMan.Pong_Madness.Widget.PlayerStat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+        />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="AAAaaaaaaaaaa"
+            android:layout_gravity="center"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="480dip"
+            android:layout_height="480dip"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/edit_background"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:id="@+id/player_dialog_layout_tosave"
+
+            >
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+
+         >
+            <ImageView
+                android:layout_width="145dip"
+                android:layout_height="145dip"
+                android:layout_margin="18dp"
+                android:background="@drawable/default_avatar"
+
+            />
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:gravity="left|center_vertical"
+                      android:paddingLeft="20dip"
+                      android:textSize="28dip"
+                      android:textStyle="bold"
+                      android:textColor="@android:color/black"
+                      android:text="aaaa"
+            />
+
+      </LinearLayout>
+        <View android:layout_width="match_parent"
+              android:layout_height="1dip"
+              android:background="@android:color/black"
+              android:alpha="0.1"/>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                >
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dip"
+                    android:layout_margin="18dp"
+                    android:textColor="@color/player_startdate"
+                    android:text="Mail"
+                    android:gravity="center"
+
+
+                    />
+
+            <EditText
+                    android:id="@+id/player_dialog_edittext_mail"
+                    android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:gravity="right|center_vertical"
+                      android:paddingRight="18dip"
+                      android:textSize="20dip"
+                      android:background="@android:color/transparent"
+                      android:textColor="@android:color/black"
+                      android:singleLine="true"
+                      android:inputType="textEmailAddress"
+                      android:text="aaaa"
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                >
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dip"
+                    android:layout_margin="18dp"
+                    android:textColor="@color/player_startdate"
+                    android:text="Company"
+                    android:gravity="center"
+
+
+                    />
+
+            <EditText
+                    android:id="@+id/player_dialog_edittext_company"
+                    android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:singleLine="true"
+                      android:gravity="right|center_vertical"
+                      android:paddingRight="18dip"
+                      android:background="@android:color/transparent"
+                      android:textSize="20dip"
+                      android:textColor="@android:color/black"
+                      android:text="aaaa"
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                >
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dip"
+                    android:layout_margin="18dp"
+                    android:textColor="@color/player_startdate"
+                    android:text="Handedness"
+                    android:gravity="center"
+
+
+                    />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|right"
+                android:paddingRight="10dip"
+                android:layout_weight="1"
+
+                >
+            <ImageView android:id="@+id/player_dialog_imageview_lefthand"
+                       android:layout_width="56dip"
+                       android:layout_height="56dip"
+                       android:layout_margin="5dip"
+                       android:src="@drawable/edit_handedness_left_inactive"/>
+
+            <ImageView android:id="@+id/player_dialog_imageview_righthand"
+                       android:layout_width="56dip"
+                       android:layout_height="56dip"
+                       android:layout_margin="5dip"
+                       android:src="@drawable/edit_handedness_right_inactive"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    </ViewSwitcher>
+</LinearLayout>
+
+</RelativeLayout>
