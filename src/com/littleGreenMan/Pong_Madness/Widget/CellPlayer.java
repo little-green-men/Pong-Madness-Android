@@ -40,4 +40,12 @@ public class CellPlayer extends LinearLayout {
         nameTv.setTypeface(FontTools.getTypefaceFromRessource(R.raw.brothers_bold, context));
         sinceDateTv.setTypeface(FontTools.getTypefaceFromRessource(R.raw.brothers_bold, context));
     }
+
+    public void setName(String name) {
+        nameTv.setText(name);
+    }
+
+    public void setSinceDate(String date) {
+        sinceDateTv.setText(date);
+    }
 }

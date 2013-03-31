@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/cell_add_lyt_main"
                 android:layout_width="@dimen/theplayers_width_addplayer"
                 android:layout_height="@dimen/theplayers_height_addplayer"
                 android:background="@drawable/player_add_button">
 
-        <EditText android:layout_height="wrap_content"
-                  android:layout_width="match_parent"
-                  android:layout_alignParentBottom="true"
-                  android:layout_margin="@dimen/theplayers_marging_edittext"
-                  android:background="@android:color/transparent"
-                  android:gravity="center"
-                />
+        <EditText
+            android:id="@+id/cell_add_edittext"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/theplayers_marging_edittext"
+            android:background="@android:color/transparent"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+        />
 
 </RelativeLayout>
