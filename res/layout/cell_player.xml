@@ -5,6 +5,7 @@
       android:layout_height="@dimen/theplayers_height_addplayer"
       android:orientation="vertical"
       android:padding="8dp"
+      android:layout_margin="10dip"
       android:background="@drawable/player_card_medium">
     <ImageView
         android:id="@+id/cell_player_picture"

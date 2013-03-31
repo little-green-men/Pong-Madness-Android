@@ -2,6 +2,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/cell_add_lyt_main"
+                android:layout_margin="10dip"
                 android:layout_width="@dimen/theplayers_width_addplayer"
                 android:layout_height="@dimen/theplayers_height_addplayer"
                 android:background="@drawable/player_add_button">
