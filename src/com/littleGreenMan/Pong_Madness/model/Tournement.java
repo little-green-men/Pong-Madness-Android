@@ -13,7 +13,7 @@ import de.greenrobot.dao.DaoException;
  */
 public class Tournement {
 
-    private long identifier;
+    private Long id;
     private String name;
     private java.util.Date startDate;
 
@@ -32,12 +32,12 @@ public class Tournement {
     public Tournement() {
     }
 
-    public Tournement(long identifier) {
-        this.identifier = identifier;
+    public Tournement(Long id) {
+        this.id = id;
     }
 
-    public Tournement(long identifier, String name, java.util.Date startDate) {
-        this.identifier = identifier;
+    public Tournement(Long id, String name, java.util.Date startDate) {
+        this.id = id;
         this.name = name;
         this.startDate = startDate;
     }
@@ -48,12 +48,12 @@ public class Tournement {
         myDao = daoSession != null ? daoSession.getTournementDao() : null;
     }
 
-    public long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -79,7 +79,7 @@ public class Tournement {
                 throw new DaoException("Entity is detached from DAO context");
             }
             PlayerTournementDao targetDao = daoSession.getPlayerTournementDao();
-            List<PlayerTournement> playerTournementListNew = targetDao._queryTournement_PlayerTournementList(identifier);
+            List<PlayerTournement> playerTournementListNew = targetDao._queryTournement_PlayerTournementList(id);
             synchronized (this) {
                 if(playerTournementList == null) {
                     playerTournementList = playerTournementListNew;
@@ -101,7 +101,7 @@ public class Tournement {
                 throw new DaoException("Entity is detached from DAO context");
             }
             GameTournementDao targetDao = daoSession.getGameTournementDao();
-            List<GameTournement> gameTournementListNew = targetDao._queryTournement_GameTournementList(identifier);
+            List<GameTournement> gameTournementListNew = targetDao._queryTournement_GameTournementList(id);
             synchronized (this) {
                 if(gameTournementList == null) {
                     gameTournementList = gameTournementListNew;

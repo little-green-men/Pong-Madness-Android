@@ -26,7 +26,7 @@ public class LeaderboardDao extends AbstractDao<Leaderboard, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Identifier = new Property(0, long.class, "identifier", true, "IDENTIFIER");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Type = new Property(1, String.class, "type", false, "TYPE");
         public final static Property TournementId = new Property(2, Long.class, "tournementId", false, "TOURNEMENT_ID");
     };
@@ -47,7 +47,7 @@ public class LeaderboardDao extends AbstractDao<Leaderboard, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'LEADERBOARD' (" + //
-                "'IDENTIFIER' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: identifier
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "'TYPE' TEXT," + // 1: type
                 "'TOURNEMENT_ID' INTEGER);"); // 2: tournementId
     }
@@ -62,7 +62,11 @@ public class LeaderboardDao extends AbstractDao<Leaderboard, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, Leaderboard entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getIdentifier());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         String type = entity.getType();
         if (type != null) {
@@ -84,14 +88,14 @@ public class LeaderboardDao extends AbstractDao<Leaderboard, Long> {
     /** @inheritdoc */
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public Leaderboard readEntity(Cursor cursor, int offset) {
         Leaderboard entity = new Leaderboard( //
-            cursor.getLong(offset + 0), // identifier
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // type
             cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2) // tournementId
         );
@@ -101,7 +105,7 @@ public class LeaderboardDao extends AbstractDao<Leaderboard, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, Leaderboard entity, int offset) {
-        entity.setIdentifier(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setType(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setTournementId(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
      }
@@ -109,7 +113,7 @@ public class LeaderboardDao extends AbstractDao<Leaderboard, Long> {
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(Leaderboard entity, long rowId) {
-        entity.setIdentifier(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
@@ -117,7 +121,7 @@ public class LeaderboardDao extends AbstractDao<Leaderboard, Long> {
     @Override
     public Long getKey(Leaderboard entity) {
         if(entity != null) {
-            return entity.getIdentifier();
+            return entity.getId();
         } else {
             return null;
         }
@@ -138,7 +142,7 @@ public class LeaderboardDao extends AbstractDao<Leaderboard, Long> {
             builder.append(',');
             SqlUtils.appendColumns(builder, "T0", daoSession.getTournementDao().getAllColumns());
             builder.append(" FROM LEADERBOARD T");
-            builder.append(" LEFT JOIN TOURNEMENT T0 ON T.'TOURNEMENT_ID'=T0.'IDENTIFIER'");
+            builder.append(" LEFT JOIN TOURNEMENT T0 ON T.'TOURNEMENT_ID'=T0.'_id'");
             builder.append(' ');
             selectDeep = builder.toString();
         }

@@ -12,7 +12,7 @@ import de.greenrobot.dao.DaoException;
  */
 public class LeaderboardPlayer {
 
-    private long identifier;
+    private Long id;
     private Integer gamesPlayedCount;
     private Integer gamesWonCount;
     private Integer rating;
@@ -38,12 +38,12 @@ public class LeaderboardPlayer {
     public LeaderboardPlayer() {
     }
 
-    public LeaderboardPlayer(long identifier) {
-        this.identifier = identifier;
+    public LeaderboardPlayer(Long id) {
+        this.id = id;
     }
 
-    public LeaderboardPlayer(long identifier, Integer gamesPlayedCount, Integer gamesWonCount, Integer rating, Long leaderboardId, Long playerId) {
-        this.identifier = identifier;
+    public LeaderboardPlayer(Long id, Integer gamesPlayedCount, Integer gamesWonCount, Integer rating, Long leaderboardId, Long playerId) {
+        this.id = id;
         this.gamesPlayedCount = gamesPlayedCount;
         this.gamesWonCount = gamesWonCount;
         this.rating = rating;
@@ -57,12 +57,12 @@ public class LeaderboardPlayer {
         myDao = daoSession != null ? daoSession.getLeaderboardPlayerDao() : null;
     }
 
-    public long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getGamesPlayedCount() {
@@ -125,7 +125,7 @@ public class LeaderboardPlayer {
     public void setLeaderboard(Leaderboard leaderboard) {
         synchronized (this) {
             this.leaderboard = leaderboard;
-            leaderboardId = leaderboard == null ? null : leaderboard.getIdentifier();
+            leaderboardId = leaderboard == null ? null : leaderboard.getId();
             leaderboard__resolvedKey = leaderboardId;
         }
     }
@@ -150,7 +150,7 @@ public class LeaderboardPlayer {
     public void setPlayer(Player player) {
         synchronized (this) {
             this.player = player;
-            playerId = player == null ? null : player.getIdentifier();
+            playerId = player == null ? null : player.getId();
             player__resolvedKey = playerId;
         }
     }

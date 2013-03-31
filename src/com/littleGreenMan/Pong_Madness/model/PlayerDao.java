@@ -28,14 +28,15 @@ public class PlayerDao extends AbstractDao<Player, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Identifier = new Property(0, long.class, "identifier", true, "IDENTIFIER");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Active = new Property(1, Boolean.class, "active", false, "ACTIVE");
         public final static Property Email = new Property(2, String.class, "email", false, "EMAIL");
         public final static Property Handedness = new Property(3, String.class, "handedness", false, "HANDEDNESS");
         public final static Property Photo = new Property(4, String.class, "photo", false, "PHOTO");
-        public final static Property SinceDate = new Property(5, java.util.Date.class, "sinceDate", false, "SINCE_DATE");
+        public final static Property SinceDate = new Property(5, String.class, "sinceDate", false, "SINCE_DATE");
         public final static Property UserName = new Property(6, String.class, "userName", false, "USER_NAME");
-        public final static Property TeamId = new Property(7, Long.class, "teamId", false, "TEAM_ID");
+        public final static Property Company = new Property(7, String.class, "company", false, "COMPANY");
+        public final static Property TeamId = new Property(8, Long.class, "teamId", false, "TEAM_ID");
     };
 
     private DaoSession daoSession;
@@ -55,14 +56,15 @@ public class PlayerDao extends AbstractDao<Player, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'PLAYER' (" + //
-                "'IDENTIFIER' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: identifier
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "'ACTIVE' INTEGER," + // 1: active
                 "'EMAIL' TEXT," + // 2: email
                 "'HANDEDNESS' TEXT," + // 3: handedness
                 "'PHOTO' TEXT," + // 4: photo
-                "'SINCE_DATE' INTEGER," + // 5: sinceDate
+                "'SINCE_DATE' TEXT," + // 5: sinceDate
                 "'USER_NAME' TEXT," + // 6: userName
-                "'TEAM_ID' INTEGER);"); // 7: teamId
+                "'COMPANY' TEXT," + // 7: company
+                "'TEAM_ID' INTEGER);"); // 8: teamId
     }
 
     /** Drops the underlying database table. */
@@ -75,7 +77,11 @@ public class PlayerDao extends AbstractDao<Player, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, Player entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getIdentifier());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         Boolean active = entity.getActive();
         if (active != null) {
@@ -97,9 +103,9 @@ public class PlayerDao extends AbstractDao<Player, Long> {
             stmt.bindString(5, photo);
         }
  
-        java.util.Date sinceDate = entity.getSinceDate();
+        String sinceDate = entity.getSinceDate();
         if (sinceDate != null) {
-            stmt.bindLong(6, sinceDate.getTime());
+            stmt.bindString(6, sinceDate);
         }
  
         String userName = entity.getUserName();
@@ -107,9 +113,14 @@ public class PlayerDao extends AbstractDao<Player, Long> {
             stmt.bindString(7, userName);
         }
  
+        String company = entity.getCompany();
+        if (company != null) {
+            stmt.bindString(8, company);
+        }
+ 
         Long teamId = entity.getTeamId();
         if (teamId != null) {
-            stmt.bindLong(8, teamId);
+            stmt.bindLong(9, teamId);
         }
     }
 
@@ -122,21 +133,22 @@ public class PlayerDao extends AbstractDao<Player, Long> {
     /** @inheritdoc */
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public Player readEntity(Cursor cursor, int offset) {
         Player entity = new Player( //
-            cursor.getLong(offset + 0), // identifier
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getShort(offset + 1) != 0, // active
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // email
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // handedness
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // photo
-            cursor.isNull(offset + 5) ? null : new java.util.Date(cursor.getLong(offset + 5)), // sinceDate
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // sinceDate
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // userName
-            cursor.isNull(offset + 7) ? null : cursor.getLong(offset + 7) // teamId
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // company
+            cursor.isNull(offset + 8) ? null : cursor.getLong(offset + 8) // teamId
         );
         return entity;
     }
@@ -144,20 +156,21 @@ public class PlayerDao extends AbstractDao<Player, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, Player entity, int offset) {
-        entity.setIdentifier(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setActive(cursor.isNull(offset + 1) ? null : cursor.getShort(offset + 1) != 0);
         entity.setEmail(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setHandedness(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setPhoto(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setSinceDate(cursor.isNull(offset + 5) ? null : new java.util.Date(cursor.getLong(offset + 5)));
+        entity.setSinceDate(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setUserName(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setTeamId(cursor.isNull(offset + 7) ? null : cursor.getLong(offset + 7));
+        entity.setCompany(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setTeamId(cursor.isNull(offset + 8) ? null : cursor.getLong(offset + 8));
      }
     
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(Player entity, long rowId) {
-        entity.setIdentifier(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
@@ -165,7 +178,7 @@ public class PlayerDao extends AbstractDao<Player, Long> {
     @Override
     public Long getKey(Player entity) {
         if(entity != null) {
-            return entity.getIdentifier();
+            return entity.getId();
         } else {
             return null;
         }
@@ -200,7 +213,7 @@ public class PlayerDao extends AbstractDao<Player, Long> {
             builder.append(',');
             SqlUtils.appendColumns(builder, "T0", daoSession.getTeamDao().getAllColumns());
             builder.append(" FROM PLAYER T");
-            builder.append(" LEFT JOIN TEAM T0 ON T.'TEAM_ID'=T0.'IDENTIFIER'");
+            builder.append(" LEFT JOIN TEAM T0 ON T.'TEAM_ID'=T0.'_id'");
             builder.append(' ');
             selectDeep = builder.toString();
         }

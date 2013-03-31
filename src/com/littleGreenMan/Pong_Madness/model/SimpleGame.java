@@ -13,7 +13,7 @@ import de.greenrobot.dao.DaoException;
  */
 public class SimpleGame extends Game  {
 
-    private long identifier;
+    private Long id;
 
     /** Used to resolve relations */
     private transient DaoSession daoSession;
@@ -29,8 +29,8 @@ public class SimpleGame extends Game  {
     public SimpleGame() {
     }
 
-    public SimpleGame(long identifier) {
-        this.identifier = identifier;
+    public SimpleGame(Long id) {
+        this.id = id;
     }
 
     /** called by internal mechanisms, do not call yourself. */
@@ -39,12 +39,12 @@ public class SimpleGame extends Game  {
         myDao = daoSession != null ? daoSession.getSimpleGameDao() : null;
     }
 
-    public long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     /** To-many relationship, resolved on first access (and after reset). Changes to to-many relations are not persisted, make changes to the target entity. */
@@ -54,7 +54,7 @@ public class SimpleGame extends Game  {
                 throw new DaoException("Entity is detached from DAO context");
             }
             SimpleParticipantDao targetDao = daoSession.getSimpleParticipantDao();
-            List<SimpleParticipant> simpleParticipantListNew = targetDao._querySimpleGame_SimpleParticipantList(identifier);
+            List<SimpleParticipant> simpleParticipantListNew = targetDao._querySimpleGame_SimpleParticipantList(id);
             synchronized (this) {
                 if(simpleParticipantList == null) {
                     simpleParticipantList = simpleParticipantListNew;

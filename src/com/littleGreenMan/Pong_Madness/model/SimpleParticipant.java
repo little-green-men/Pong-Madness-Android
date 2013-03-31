@@ -9,7 +9,7 @@ package com.littleGreenMan.Pong_Madness.model;
  */
 public class SimpleParticipant {
 
-    private long identifier;
+    private Long id;
     private Integer score;
     private Long simpleGameId;
     private Long playerId;
@@ -20,23 +20,23 @@ public class SimpleParticipant {
     public SimpleParticipant() {
     }
 
-    public SimpleParticipant(long identifier) {
-        this.identifier = identifier;
+    public SimpleParticipant(Long id) {
+        this.id = id;
     }
 
-    public SimpleParticipant(long identifier, Integer score, Long simpleGameId, Long playerId) {
-        this.identifier = identifier;
+    public SimpleParticipant(Long id, Integer score, Long simpleGameId, Long playerId) {
+        this.id = id;
         this.score = score;
         this.simpleGameId = simpleGameId;
         this.playerId = playerId;
     }
 
-    public long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getScore() {

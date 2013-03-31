@@ -13,7 +13,7 @@ import de.greenrobot.dao.DaoException;
  */
 public class Team {
 
-    private long identifier;
+    private Long id;
     private String logo;
     private String name;
 
@@ -31,12 +31,12 @@ public class Team {
     public Team() {
     }
 
-    public Team(long identifier) {
-        this.identifier = identifier;
+    public Team(Long id) {
+        this.id = id;
     }
 
-    public Team(long identifier, String logo, String name) {
-        this.identifier = identifier;
+    public Team(Long id, String logo, String name) {
+        this.id = id;
         this.logo = logo;
         this.name = name;
     }
@@ -47,12 +47,12 @@ public class Team {
         myDao = daoSession != null ? daoSession.getTeamDao() : null;
     }
 
-    public long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLogo() {
@@ -78,7 +78,7 @@ public class Team {
                 throw new DaoException("Entity is detached from DAO context");
             }
             PlayerDao targetDao = daoSession.getPlayerDao();
-            List<Player> playerListNew = targetDao._queryTeam_PlayerList(identifier);
+            List<Player> playerListNew = targetDao._queryTeam_PlayerList(id);
             synchronized (this) {
                 if(playerList == null) {
                     playerList = playerListNew;

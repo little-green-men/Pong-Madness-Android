@@ -28,7 +28,7 @@ public class LeaderboardPlayerDao extends AbstractDao<LeaderboardPlayer, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Identifier = new Property(0, long.class, "identifier", true, "IDENTIFIER");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property GamesPlayedCount = new Property(1, Integer.class, "gamesPlayedCount", false, "GAMES_PLAYED_COUNT");
         public final static Property GamesWonCount = new Property(2, Integer.class, "gamesWonCount", false, "GAMES_WON_COUNT");
         public final static Property Rating = new Property(3, Integer.class, "rating", false, "RATING");
@@ -54,7 +54,7 @@ public class LeaderboardPlayerDao extends AbstractDao<LeaderboardPlayer, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'LEADERBOARD_PLAYER' (" + //
-                "'IDENTIFIER' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: identifier
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "'GAMES_PLAYED_COUNT' INTEGER," + // 1: gamesPlayedCount
                 "'GAMES_WON_COUNT' INTEGER," + // 2: gamesWonCount
                 "'RATING' INTEGER," + // 3: rating
@@ -72,7 +72,11 @@ public class LeaderboardPlayerDao extends AbstractDao<LeaderboardPlayer, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, LeaderboardPlayer entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getIdentifier());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         Integer gamesPlayedCount = entity.getGamesPlayedCount();
         if (gamesPlayedCount != null) {
@@ -109,14 +113,14 @@ public class LeaderboardPlayerDao extends AbstractDao<LeaderboardPlayer, Long> {
     /** @inheritdoc */
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public LeaderboardPlayer readEntity(Cursor cursor, int offset) {
         LeaderboardPlayer entity = new LeaderboardPlayer( //
-            cursor.getLong(offset + 0), // identifier
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1), // gamesPlayedCount
             cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2), // gamesWonCount
             cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3), // rating
@@ -129,7 +133,7 @@ public class LeaderboardPlayerDao extends AbstractDao<LeaderboardPlayer, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, LeaderboardPlayer entity, int offset) {
-        entity.setIdentifier(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setGamesPlayedCount(cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1));
         entity.setGamesWonCount(cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2));
         entity.setRating(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
@@ -140,7 +144,7 @@ public class LeaderboardPlayerDao extends AbstractDao<LeaderboardPlayer, Long> {
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(LeaderboardPlayer entity, long rowId) {
-        entity.setIdentifier(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
@@ -148,7 +152,7 @@ public class LeaderboardPlayerDao extends AbstractDao<LeaderboardPlayer, Long> {
     @Override
     public Long getKey(LeaderboardPlayer entity) {
         if(entity != null) {
-            return entity.getIdentifier();
+            return entity.getId();
         } else {
             return null;
         }
@@ -199,8 +203,8 @@ public class LeaderboardPlayerDao extends AbstractDao<LeaderboardPlayer, Long> {
             builder.append(',');
             SqlUtils.appendColumns(builder, "T1", daoSession.getPlayerDao().getAllColumns());
             builder.append(" FROM LEADERBOARD_PLAYER T");
-            builder.append(" LEFT JOIN LEADERBOARD T0 ON T.'LEADERBOARD_ID'=T0.'IDENTIFIER'");
-            builder.append(" LEFT JOIN PLAYER T1 ON T.'PLAYER_ID'=T1.'IDENTIFIER'");
+            builder.append(" LEFT JOIN LEADERBOARD T0 ON T.'LEADERBOARD_ID'=T0.'_id'");
+            builder.append(" LEFT JOIN PLAYER T1 ON T.'PLAYER_ID'=T1.'_id'");
             builder.append(' ');
             selectDeep = builder.toString();
         }

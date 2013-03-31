@@ -23,7 +23,7 @@ public class TeamDao extends AbstractDao<Team, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Identifier = new Property(0, long.class, "identifier", true, "IDENTIFIER");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Logo = new Property(1, String.class, "logo", false, "LOGO");
         public final static Property Name = new Property(2, String.class, "name", false, "NAME");
     };
@@ -44,7 +44,7 @@ public class TeamDao extends AbstractDao<Team, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'TEAM' (" + //
-                "'IDENTIFIER' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: identifier
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "'LOGO' TEXT," + // 1: logo
                 "'NAME' TEXT);"); // 2: name
     }
@@ -59,7 +59,11 @@ public class TeamDao extends AbstractDao<Team, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, Team entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getIdentifier());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         String logo = entity.getLogo();
         if (logo != null) {
@@ -81,14 +85,14 @@ public class TeamDao extends AbstractDao<Team, Long> {
     /** @inheritdoc */
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public Team readEntity(Cursor cursor, int offset) {
         Team entity = new Team( //
-            cursor.getLong(offset + 0), // identifier
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // logo
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // name
         );
@@ -98,7 +102,7 @@ public class TeamDao extends AbstractDao<Team, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, Team entity, int offset) {
-        entity.setIdentifier(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setLogo(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
      }
@@ -106,7 +110,7 @@ public class TeamDao extends AbstractDao<Team, Long> {
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(Team entity, long rowId) {
-        entity.setIdentifier(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
@@ -114,7 +118,7 @@ public class TeamDao extends AbstractDao<Team, Long> {
     @Override
     public Long getKey(Team entity) {
         if(entity != null) {
-            return entity.getIdentifier();
+            return entity.getId();
         } else {
             return null;
         }

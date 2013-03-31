@@ -23,7 +23,7 @@ public class SimpleGameDao extends AbstractDao<SimpleGame, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Identifier = new Property(0, long.class, "identifier", true, "IDENTIFIER");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
     };
 
     private DaoSession daoSession;
@@ -42,7 +42,7 @@ public class SimpleGameDao extends AbstractDao<SimpleGame, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'SIMPLE_GAME' (" + //
-                "'IDENTIFIER' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL );"); // 0: identifier
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT );"); // 0: id
     }
 
     /** Drops the underlying database table. */
@@ -55,7 +55,11 @@ public class SimpleGameDao extends AbstractDao<SimpleGame, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, SimpleGame entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getIdentifier());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
     }
 
     @Override
@@ -67,14 +71,14 @@ public class SimpleGameDao extends AbstractDao<SimpleGame, Long> {
     /** @inheritdoc */
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public SimpleGame readEntity(Cursor cursor, int offset) {
         SimpleGame entity = new SimpleGame( //
-            cursor.getLong(offset + 0) // identifier
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0) // id
         );
         return entity;
     }
@@ -82,13 +86,13 @@ public class SimpleGameDao extends AbstractDao<SimpleGame, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, SimpleGame entity, int offset) {
-        entity.setIdentifier(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
      }
     
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(SimpleGame entity, long rowId) {
-        entity.setIdentifier(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
@@ -96,7 +100,7 @@ public class SimpleGameDao extends AbstractDao<SimpleGame, Long> {
     @Override
     public Long getKey(SimpleGame entity) {
         if(entity != null) {
-            return entity.getIdentifier();
+            return entity.getId();
         } else {
             return null;
         }

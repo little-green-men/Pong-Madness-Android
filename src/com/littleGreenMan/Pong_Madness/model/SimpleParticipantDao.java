@@ -26,7 +26,7 @@ public class SimpleParticipantDao extends AbstractDao<SimpleParticipant, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Identifier = new Property(0, long.class, "identifier", true, "IDENTIFIER");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Score = new Property(1, Integer.class, "score", false, "SCORE");
         public final static Property SimpleGameId = new Property(2, Long.class, "simpleGameId", false, "SIMPLE_GAME_ID");
         public final static Property PlayerId = new Property(3, Long.class, "playerId", false, "PLAYER_ID");
@@ -47,7 +47,7 @@ public class SimpleParticipantDao extends AbstractDao<SimpleParticipant, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'SIMPLE_PARTICIPANT' (" + //
-                "'IDENTIFIER' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: identifier
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "'SCORE' INTEGER," + // 1: score
                 "'SIMPLE_GAME_ID' INTEGER," + // 2: simpleGameId
                 "'PLAYER_ID' INTEGER);"); // 3: playerId
@@ -63,7 +63,11 @@ public class SimpleParticipantDao extends AbstractDao<SimpleParticipant, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, SimpleParticipant entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getIdentifier());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         Integer score = entity.getScore();
         if (score != null) {
@@ -84,14 +88,14 @@ public class SimpleParticipantDao extends AbstractDao<SimpleParticipant, Long> {
     /** @inheritdoc */
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public SimpleParticipant readEntity(Cursor cursor, int offset) {
         SimpleParticipant entity = new SimpleParticipant( //
-            cursor.getLong(offset + 0), // identifier
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1), // score
             cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2), // simpleGameId
             cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3) // playerId
@@ -102,7 +106,7 @@ public class SimpleParticipantDao extends AbstractDao<SimpleParticipant, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, SimpleParticipant entity, int offset) {
-        entity.setIdentifier(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setScore(cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1));
         entity.setSimpleGameId(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
         entity.setPlayerId(cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3));
@@ -111,7 +115,7 @@ public class SimpleParticipantDao extends AbstractDao<SimpleParticipant, Long> {
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(SimpleParticipant entity, long rowId) {
-        entity.setIdentifier(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
@@ -119,7 +123,7 @@ public class SimpleParticipantDao extends AbstractDao<SimpleParticipant, Long> {
     @Override
     public Long getKey(SimpleParticipant entity) {
         if(entity != null) {
-            return entity.getIdentifier();
+            return entity.getId();
         } else {
             return null;
         }

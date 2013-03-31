@@ -13,7 +13,7 @@ import de.greenrobot.dao.DaoException;
  */
 public class Game {
 
-    private long identifier;
+    private Long id;
     private java.util.Date startDate;
     private Integer timePlayed;
     private String type;
@@ -32,12 +32,12 @@ public class Game {
     public Game() {
     }
 
-    public Game(long identifier) {
-        this.identifier = identifier;
+    public Game(Long id) {
+        this.id = id;
     }
 
-    public Game(long identifier, java.util.Date startDate, Integer timePlayed, String type) {
-        this.identifier = identifier;
+    public Game(Long id, java.util.Date startDate, Integer timePlayed, String type) {
+        this.id = id;
         this.startDate = startDate;
         this.timePlayed = timePlayed;
         this.type = type;
@@ -49,12 +49,12 @@ public class Game {
         myDao = daoSession != null ? daoSession.getGameDao() : null;
     }
 
-    public long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public java.util.Date getStartDate() {
@@ -88,7 +88,7 @@ public class Game {
                 throw new DaoException("Entity is detached from DAO context");
             }
             GameTournementDao targetDao = daoSession.getGameTournementDao();
-            List<GameTournement> gameTournementListNew = targetDao._queryGame_GameTournementList(identifier);
+            List<GameTournement> gameTournementListNew = targetDao._queryGame_GameTournementList(id);
             synchronized (this) {
                 if(gameTournementList == null) {
                     gameTournementList = gameTournementListNew;

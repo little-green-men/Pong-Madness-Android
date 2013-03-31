@@ -12,7 +12,7 @@ import de.greenrobot.dao.DaoException;
  */
 public class PlayerTournement {
 
-    private Long identifier;
+    private Long id;
     private Long playerId;
     private Long tournementId;
 
@@ -35,12 +35,12 @@ public class PlayerTournement {
     public PlayerTournement() {
     }
 
-    public PlayerTournement(Long identifier) {
-        this.identifier = identifier;
+    public PlayerTournement(Long id) {
+        this.id = id;
     }
 
-    public PlayerTournement(Long identifier, Long playerId, Long tournementId) {
-        this.identifier = identifier;
+    public PlayerTournement(Long id, Long playerId, Long tournementId) {
+        this.id = id;
         this.playerId = playerId;
         this.tournementId = tournementId;
     }
@@ -51,12 +51,12 @@ public class PlayerTournement {
         myDao = daoSession != null ? daoSession.getPlayerTournementDao() : null;
     }
 
-    public Long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(Long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getPlayerId() {
@@ -95,7 +95,7 @@ public class PlayerTournement {
     public void setPlayer(Player player) {
         synchronized (this) {
             this.player = player;
-            playerId = player == null ? null : player.getIdentifier();
+            playerId = player == null ? null : player.getId();
             player__resolvedKey = playerId;
         }
     }
@@ -120,7 +120,7 @@ public class PlayerTournement {
     public void setTournement(Tournement tournement) {
         synchronized (this) {
             this.tournement = tournement;
-            tournementId = tournement == null ? null : tournement.getIdentifier();
+            tournementId = tournement == null ? null : tournement.getId();
             tournement__resolvedKey = tournementId;
         }
     }

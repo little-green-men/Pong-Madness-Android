@@ -26,7 +26,7 @@ public class BinomeDao extends AbstractDao<Binome, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Identifier = new Property(0, long.class, "identifier", true, "IDENTIFIER");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
         public final static Property DoubleGameId = new Property(2, Long.class, "doubleGameId", false, "DOUBLE_GAME_ID");
     };
@@ -48,7 +48,7 @@ public class BinomeDao extends AbstractDao<Binome, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'BINOME' (" + //
-                "'IDENTIFIER' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: identifier
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "'NAME' TEXT," + // 1: name
                 "'DOUBLE_GAME_ID' INTEGER);"); // 2: doubleGameId
     }
@@ -63,7 +63,11 @@ public class BinomeDao extends AbstractDao<Binome, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, Binome entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getIdentifier());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         String name = entity.getName();
         if (name != null) {
@@ -80,14 +84,14 @@ public class BinomeDao extends AbstractDao<Binome, Long> {
     /** @inheritdoc */
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public Binome readEntity(Cursor cursor, int offset) {
         Binome entity = new Binome( //
-            cursor.getLong(offset + 0), // identifier
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1) // name
         );
         return entity;
@@ -96,14 +100,14 @@ public class BinomeDao extends AbstractDao<Binome, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, Binome entity, int offset) {
-        entity.setIdentifier(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
      }
     
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(Binome entity, long rowId) {
-        entity.setIdentifier(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
@@ -111,7 +115,7 @@ public class BinomeDao extends AbstractDao<Binome, Long> {
     @Override
     public Long getKey(Binome entity) {
         if(entity != null) {
-            return entity.getIdentifier();
+            return entity.getId();
         } else {
             return null;
         }

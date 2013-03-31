@@ -26,7 +26,7 @@ public class GameTournementDao extends AbstractDao<GameTournement, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Identifier = new Property(0, Long.class, "identifier", true, "IDENTIFIER");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property GameId = new Property(1, Long.class, "gameId", false, "GAME_ID");
         public final static Property TournementId = new Property(2, Long.class, "tournementId", false, "TOURNEMENT_ID");
     };
@@ -46,7 +46,7 @@ public class GameTournementDao extends AbstractDao<GameTournement, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'GAME_TOURNEMENT' (" + //
-                "'IDENTIFIER' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: identifier
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "'GAME_ID' INTEGER," + // 1: gameId
                 "'TOURNEMENT_ID' INTEGER);"); // 2: tournementId
     }
@@ -62,9 +62,9 @@ public class GameTournementDao extends AbstractDao<GameTournement, Long> {
     protected void bindValues(SQLiteStatement stmt, GameTournement entity) {
         stmt.clearBindings();
  
-        Long identifier = entity.getIdentifier();
-        if (identifier != null) {
-            stmt.bindLong(1, identifier);
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
         }
  
         Long gameId = entity.getGameId();
@@ -88,7 +88,7 @@ public class GameTournementDao extends AbstractDao<GameTournement, Long> {
     @Override
     public GameTournement readEntity(Cursor cursor, int offset) {
         GameTournement entity = new GameTournement( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // identifier
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // gameId
             cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2) // tournementId
         );
@@ -98,7 +98,7 @@ public class GameTournementDao extends AbstractDao<GameTournement, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, GameTournement entity, int offset) {
-        entity.setIdentifier(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setGameId(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
         entity.setTournementId(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
      }
@@ -106,7 +106,7 @@ public class GameTournementDao extends AbstractDao<GameTournement, Long> {
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(GameTournement entity, long rowId) {
-        entity.setIdentifier(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
@@ -114,7 +114,7 @@ public class GameTournementDao extends AbstractDao<GameTournement, Long> {
     @Override
     public Long getKey(GameTournement entity) {
         if(entity != null) {
-            return entity.getIdentifier();
+            return entity.getId();
         } else {
             return null;
         }

@@ -13,7 +13,7 @@ import de.greenrobot.dao.DaoException;
  */
 public class DoubleParticipant {
 
-    private long identifier;
+    private Long id;
     private Integer score;
     private Long doubleGameId;
     private Long pbinomeId;
@@ -32,12 +32,12 @@ public class DoubleParticipant {
     public DoubleParticipant() {
     }
 
-    public DoubleParticipant(long identifier) {
-        this.identifier = identifier;
+    public DoubleParticipant(Long id) {
+        this.id = id;
     }
 
-    public DoubleParticipant(long identifier, Integer score, Long doubleGameId, Long pbinomeId) {
-        this.identifier = identifier;
+    public DoubleParticipant(Long id, Integer score, Long doubleGameId, Long pbinomeId) {
+        this.id = id;
         this.score = score;
         this.doubleGameId = doubleGameId;
         this.pbinomeId = pbinomeId;
@@ -49,12 +49,12 @@ public class DoubleParticipant {
         myDao = daoSession != null ? daoSession.getDoubleParticipantDao() : null;
     }
 
-    public long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getScore() {
@@ -88,7 +88,7 @@ public class DoubleParticipant {
                 throw new DaoException("Entity is detached from DAO context");
             }
             BinomeDao targetDao = daoSession.getBinomeDao();
-            List<Binome> doubleParticipantListNew = targetDao._queryDoubleParticipant_DoubleParticipantList(identifier);
+            List<Binome> doubleParticipantListNew = targetDao._queryDoubleParticipant_DoubleParticipantList(id);
             synchronized (this) {
                 if(doubleParticipantList == null) {
                     doubleParticipantList = doubleParticipantListNew;

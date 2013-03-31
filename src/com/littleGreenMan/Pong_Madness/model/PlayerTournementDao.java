@@ -28,7 +28,7 @@ public class PlayerTournementDao extends AbstractDao<PlayerTournement, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Identifier = new Property(0, Long.class, "identifier", true, "IDENTIFIER");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property PlayerId = new Property(1, Long.class, "playerId", false, "PLAYER_ID");
         public final static Property TournementId = new Property(2, Long.class, "tournementId", false, "TOURNEMENT_ID");
     };
@@ -51,7 +51,7 @@ public class PlayerTournementDao extends AbstractDao<PlayerTournement, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'PLAYER_TOURNEMENT' (" + //
-                "'IDENTIFIER' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: identifier
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "'PLAYER_ID' INTEGER," + // 1: playerId
                 "'TOURNEMENT_ID' INTEGER);"); // 2: tournementId
     }
@@ -67,9 +67,9 @@ public class PlayerTournementDao extends AbstractDao<PlayerTournement, Long> {
     protected void bindValues(SQLiteStatement stmt, PlayerTournement entity) {
         stmt.clearBindings();
  
-        Long identifier = entity.getIdentifier();
-        if (identifier != null) {
-            stmt.bindLong(1, identifier);
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
         }
  
         Long playerId = entity.getPlayerId();
@@ -99,7 +99,7 @@ public class PlayerTournementDao extends AbstractDao<PlayerTournement, Long> {
     @Override
     public PlayerTournement readEntity(Cursor cursor, int offset) {
         PlayerTournement entity = new PlayerTournement( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // identifier
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // playerId
             cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2) // tournementId
         );
@@ -109,7 +109,7 @@ public class PlayerTournementDao extends AbstractDao<PlayerTournement, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, PlayerTournement entity, int offset) {
-        entity.setIdentifier(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setPlayerId(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
         entity.setTournementId(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
      }
@@ -117,7 +117,7 @@ public class PlayerTournementDao extends AbstractDao<PlayerTournement, Long> {
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(PlayerTournement entity, long rowId) {
-        entity.setIdentifier(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
@@ -125,7 +125,7 @@ public class PlayerTournementDao extends AbstractDao<PlayerTournement, Long> {
     @Override
     public Long getKey(PlayerTournement entity) {
         if(entity != null) {
-            return entity.getIdentifier();
+            return entity.getId();
         } else {
             return null;
         }
@@ -176,8 +176,8 @@ public class PlayerTournementDao extends AbstractDao<PlayerTournement, Long> {
             builder.append(',');
             SqlUtils.appendColumns(builder, "T1", daoSession.getTournementDao().getAllColumns());
             builder.append(" FROM PLAYER_TOURNEMENT T");
-            builder.append(" LEFT JOIN PLAYER T0 ON T.'PLAYER_ID'=T0.'IDENTIFIER'");
-            builder.append(" LEFT JOIN TOURNEMENT T1 ON T.'TOURNEMENT_ID'=T1.'IDENTIFIER'");
+            builder.append(" LEFT JOIN PLAYER T0 ON T.'PLAYER_ID'=T0.'_id'");
+            builder.append(" LEFT JOIN TOURNEMENT T1 ON T.'TOURNEMENT_ID'=T1.'_id'");
             builder.append(' ');
             selectDeep = builder.toString();
         }

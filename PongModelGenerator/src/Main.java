@@ -40,7 +40,7 @@ public class Main {
 
     private static void createTournament() {
         final Entity tournament = schema.addEntity("Tournement");
-        tournament.addLongProperty("identifier").primaryKey().autoincrement().notNull().getProperty();
+        tournament.addIdProperty().autoincrement();
 
         tournament.addStringProperty("name");
         tournament.addDateProperty("startDate");
@@ -48,7 +48,7 @@ public class Main {
 
     private static void createLeaderboard() {
         final Entity leaderboard = schema.addEntity("Leaderboard");
-        leaderboard.addLongProperty("identifier").primaryKey().autoincrement().notNull().getProperty();
+        leaderboard.addIdProperty().autoincrement();
         leaderboard.addStringProperty("type");
 
         //To One
@@ -61,7 +61,7 @@ public class Main {
 
     private static void createLeaderboardPlayer() {
         final Entity leaderboardPlayer = schema.addEntity("LeaderboardPlayer");
-        leaderboardPlayer.addLongProperty("identifier").primaryKey().autoincrement().notNull().getProperty();
+        leaderboardPlayer.addIdProperty().autoincrement();
 
         leaderboardPlayer.addIntProperty("gamesPlayedCount");
         leaderboardPlayer.addIntProperty("gamesWonCount");
@@ -77,14 +77,15 @@ public class Main {
 
     private static void createPlayer() {
         final Entity player = schema.addEntity("Player");
-        player.addLongProperty("identifier").primaryKey().autoincrement().notNull().getProperty();
+        player.addIdProperty().autoincrement();
 
         player.addBooleanProperty("active");
         player.addStringProperty("email");
         player.addStringProperty("handedness");
         player.addStringProperty("photo");
-        player.addDateProperty("sinceDate");
+        player.addStringProperty("sinceDate");
         player.addStringProperty("userName");
+        player.addStringProperty("company");
 
         Entity leaderboardPlayer = getEntityFromName("LeaderboardPlayer");
         Property playerId = leaderboardPlayer.addLongProperty("playerId").getProperty();
@@ -97,7 +98,7 @@ public class Main {
 
     private static void createPlayerTournement() {
         final Entity playerTournement  = schema.addEntity("PlayerTournement");
-        playerTournement.addLongProperty("identifier").primaryKey().autoincrement().getProperty();
+        playerTournement.addIdProperty().autoincrement();
 
         Entity player = getEntityFromName("Player");
         Property playerId = playerTournement.addLongProperty("playerId").getProperty();
@@ -116,14 +117,14 @@ public class Main {
 
     private static void createBinome() {
         final Entity binome = schema.addEntity("Binome");
-        binome.addLongProperty("identifier").primaryKey().autoincrement().notNull().getProperty();
+        binome.addIdProperty().autoincrement();
         binome.addStringProperty("name");
 
     }
 
     private static void createPlayerBinome() {
         final Entity playerBinome = schema.addEntity("PlayerBinome");
-        playerBinome.addLongProperty("identifier").primaryKey().autoincrement().notNull().getProperty();
+        playerBinome.addIdProperty().autoincrement();
 
         final Entity player = getEntityFromName("Player");
         final Entity binome = getEntityFromName("Binome");
@@ -138,7 +139,7 @@ public class Main {
 
     private static void createTeam() {
         final Entity team = schema.addEntity("Team");
-        team.addLongProperty("identifier").primaryKey().autoincrement().notNull().getProperty();
+        team.addIdProperty().autoincrement();
         team.addStringProperty("logo");
         team.addStringProperty("name");
 
@@ -151,7 +152,7 @@ public class Main {
 
     private static void createGame() {
         final Entity game = schema.addEntity("Game");
-        game.addLongProperty("identifier").primaryKey().autoincrement().notNull().getProperty();
+        game.addIdProperty().autoincrement();
         game.addDateProperty("startDate");
         game.addIntProperty("timePlayed");
         game.addStringProperty("type");
@@ -159,7 +160,7 @@ public class Main {
 
     private static void createGameTournement() {
         final Entity gameTournement = schema.addEntity("GameTournement");
-        gameTournement.addLongProperty("identifier").primaryKey().autoincrement().getProperty();
+        gameTournement.addIdProperty().autoincrement();
 
         final Entity game = getEntityFromName("Game");
         final Entity tournement = getEntityFromName("Tournement");
@@ -175,20 +176,20 @@ public class Main {
     private static void createSimpleGame() {
         final Entity simpleGame= schema.addEntity("SimpleGame");
         simpleGame.setSuperclass("Game");
-        simpleGame.addLongProperty("identifier").primaryKey().autoincrement().notNull().getProperty();
+        simpleGame.addIdProperty().autoincrement();
 
     }
 
     private static void createDoubleGame() {
         final Entity doubleGame= schema.addEntity("DoubleGame");
         doubleGame.setSuperclass("Game");
-        doubleGame.addLongProperty("identifier").primaryKey().autoincrement().notNull().getProperty();
+        doubleGame.addIdProperty().autoincrement();
 
     }
 
     private static void createSimpleParticipant() {
         final Entity simpleParticipant= schema.addEntity("SimpleParticipant");
-        simpleParticipant.addLongProperty("identifier").primaryKey().autoincrement().notNull().getProperty();
+        simpleParticipant.addIdProperty().autoincrement();
         simpleParticipant.addIntProperty("score");
 
         final Entity simpleGame = getEntityFromName("SimpleGame");
@@ -203,7 +204,7 @@ public class Main {
 
     private static void createDoubleParticipant() {
         final Entity doubleParticipant= schema.addEntity("DoubleParticipant");
-        doubleParticipant.addLongProperty("identifier").primaryKey().autoincrement().notNull().getProperty();
+        doubleParticipant.addIdProperty().autoincrement();
         doubleParticipant.addIntProperty("score");
 
         final Entity doubleGame = getEntityFromName("DoubleGame");

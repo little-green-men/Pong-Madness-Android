@@ -23,7 +23,7 @@ public class TournementDao extends AbstractDao<Tournement, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Identifier = new Property(0, long.class, "identifier", true, "IDENTIFIER");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
         public final static Property StartDate = new Property(2, java.util.Date.class, "startDate", false, "START_DATE");
     };
@@ -44,7 +44,7 @@ public class TournementDao extends AbstractDao<Tournement, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'TOURNEMENT' (" + //
-                "'IDENTIFIER' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: identifier
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "'NAME' TEXT," + // 1: name
                 "'START_DATE' INTEGER);"); // 2: startDate
     }
@@ -59,7 +59,11 @@ public class TournementDao extends AbstractDao<Tournement, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, Tournement entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getIdentifier());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         String name = entity.getName();
         if (name != null) {
@@ -81,14 +85,14 @@ public class TournementDao extends AbstractDao<Tournement, Long> {
     /** @inheritdoc */
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public Tournement readEntity(Cursor cursor, int offset) {
         Tournement entity = new Tournement( //
-            cursor.getLong(offset + 0), // identifier
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
             cursor.isNull(offset + 2) ? null : new java.util.Date(cursor.getLong(offset + 2)) // startDate
         );
@@ -98,7 +102,7 @@ public class TournementDao extends AbstractDao<Tournement, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, Tournement entity, int offset) {
-        entity.setIdentifier(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setStartDate(cursor.isNull(offset + 2) ? null : new java.util.Date(cursor.getLong(offset + 2)));
      }
@@ -106,7 +110,7 @@ public class TournementDao extends AbstractDao<Tournement, Long> {
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(Tournement entity, long rowId) {
-        entity.setIdentifier(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
@@ -114,7 +118,7 @@ public class TournementDao extends AbstractDao<Tournement, Long> {
     @Override
     public Long getKey(Tournement entity) {
         if(entity != null) {
-            return entity.getIdentifier();
+            return entity.getId();
         } else {
             return null;
         }

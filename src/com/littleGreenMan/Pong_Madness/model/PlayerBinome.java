@@ -9,7 +9,7 @@ package com.littleGreenMan.Pong_Madness.model;
  */
 public class PlayerBinome {
 
-    private long identifier;
+    private Long id;
     private Long playerId;
     private Long binomeId;
 
@@ -19,22 +19,22 @@ public class PlayerBinome {
     public PlayerBinome() {
     }
 
-    public PlayerBinome(long identifier) {
-        this.identifier = identifier;
+    public PlayerBinome(Long id) {
+        this.id = id;
     }
 
-    public PlayerBinome(long identifier, Long playerId, Long binomeId) {
-        this.identifier = identifier;
+    public PlayerBinome(Long id, Long playerId, Long binomeId) {
+        this.id = id;
         this.playerId = playerId;
         this.binomeId = binomeId;
     }
 
-    public long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getPlayerId() {

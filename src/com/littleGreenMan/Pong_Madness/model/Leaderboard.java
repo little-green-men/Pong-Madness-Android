@@ -13,7 +13,7 @@ import de.greenrobot.dao.DaoException;
  */
 public class Leaderboard {
 
-    private long identifier;
+    private Long id;
     private String type;
     private Long tournementId;
 
@@ -34,12 +34,12 @@ public class Leaderboard {
     public Leaderboard() {
     }
 
-    public Leaderboard(long identifier) {
-        this.identifier = identifier;
+    public Leaderboard(Long id) {
+        this.id = id;
     }
 
-    public Leaderboard(long identifier, String type, Long tournementId) {
-        this.identifier = identifier;
+    public Leaderboard(Long id, String type, Long tournementId) {
+        this.id = id;
         this.type = type;
         this.tournementId = tournementId;
     }
@@ -50,12 +50,12 @@ public class Leaderboard {
         myDao = daoSession != null ? daoSession.getLeaderboardDao() : null;
     }
 
-    public long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getType() {
@@ -94,7 +94,7 @@ public class Leaderboard {
     public void setTournement(Tournement tournement) {
         synchronized (this) {
             this.tournement = tournement;
-            tournementId = tournement == null ? null : tournement.getIdentifier();
+            tournementId = tournement == null ? null : tournement.getId();
             tournement__resolvedKey = tournementId;
         }
     }
@@ -106,7 +106,7 @@ public class Leaderboard {
                 throw new DaoException("Entity is detached from DAO context");
             }
             LeaderboardPlayerDao targetDao = daoSession.getLeaderboardPlayerDao();
-            List<LeaderboardPlayer> leaderboardPlayerListNew = targetDao._queryLeaderboard_LeaderboardPlayerList(identifier);
+            List<LeaderboardPlayer> leaderboardPlayerListNew = targetDao._queryLeaderboard_LeaderboardPlayerList(id);
             synchronized (this) {
                 if(leaderboardPlayerList == null) {
                     leaderboardPlayerList = leaderboardPlayerListNew;

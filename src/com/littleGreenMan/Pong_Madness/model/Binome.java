@@ -13,7 +13,7 @@ import de.greenrobot.dao.DaoException;
  */
 public class Binome {
 
-    private long identifier;
+    private Long id;
     private String name;
 
     /** Used to resolve relations */
@@ -31,12 +31,12 @@ public class Binome {
     public Binome() {
     }
 
-    public Binome(long identifier) {
-        this.identifier = identifier;
+    public Binome(Long id) {
+        this.id = id;
     }
 
-    public Binome(long identifier, String name) {
-        this.identifier = identifier;
+    public Binome(Long id, String name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -46,12 +46,12 @@ public class Binome {
         myDao = daoSession != null ? daoSession.getBinomeDao() : null;
     }
 
-    public long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -69,7 +69,7 @@ public class Binome {
                 throw new DaoException("Entity is detached from DAO context");
             }
             PlayerBinomeDao targetDao = daoSession.getPlayerBinomeDao();
-            List<PlayerBinome> playerBinomeListNew = targetDao._queryBinome_PlayerBinomeList(identifier);
+            List<PlayerBinome> playerBinomeListNew = targetDao._queryBinome_PlayerBinomeList(id);
             synchronized (this) {
                 if(playerBinomeList == null) {
                     playerBinomeList = playerBinomeListNew;
@@ -91,7 +91,7 @@ public class Binome {
                 throw new DaoException("Entity is detached from DAO context");
             }
             DoubleParticipantDao targetDao = daoSession.getDoubleParticipantDao();
-            List<DoubleParticipant> doubleParticipantListNew = targetDao._queryBinome_DoubleParticipantList(identifier);
+            List<DoubleParticipant> doubleParticipantListNew = targetDao._queryBinome_DoubleParticipantList(id);
             synchronized (this) {
                 if(doubleParticipantList == null) {
                     doubleParticipantList = doubleParticipantListNew;

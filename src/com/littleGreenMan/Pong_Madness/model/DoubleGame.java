@@ -9,7 +9,7 @@ package com.littleGreenMan.Pong_Madness.model;
  */
 public class DoubleGame extends Game  {
 
-    private long identifier;
+    private Long id;
 
     // KEEP FIELDS - put your custom fields here
     // KEEP FIELDS END
@@ -17,16 +17,16 @@ public class DoubleGame extends Game  {
     public DoubleGame() {
     }
 
-    public DoubleGame(long identifier) {
-        this.identifier = identifier;
+    public DoubleGame(Long id) {
+        this.id = id;
     }
 
-    public long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     // KEEP METHODS - put your custom methods here

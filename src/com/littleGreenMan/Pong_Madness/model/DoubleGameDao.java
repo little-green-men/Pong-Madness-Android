@@ -23,7 +23,7 @@ public class DoubleGameDao extends AbstractDao<DoubleGame, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Identifier = new Property(0, long.class, "identifier", true, "IDENTIFIER");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
     };
 
 
@@ -39,7 +39,7 @@ public class DoubleGameDao extends AbstractDao<DoubleGame, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'DOUBLE_GAME' (" + //
-                "'IDENTIFIER' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL );"); // 0: identifier
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT );"); // 0: id
     }
 
     /** Drops the underlying database table. */
@@ -52,20 +52,24 @@ public class DoubleGameDao extends AbstractDao<DoubleGame, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, DoubleGame entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getIdentifier());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
     }
 
     /** @inheritdoc */
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public DoubleGame readEntity(Cursor cursor, int offset) {
         DoubleGame entity = new DoubleGame( //
-            cursor.getLong(offset + 0) // identifier
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0) // id
         );
         return entity;
     }
@@ -73,13 +77,13 @@ public class DoubleGameDao extends AbstractDao<DoubleGame, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, DoubleGame entity, int offset) {
-        entity.setIdentifier(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
      }
     
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(DoubleGame entity, long rowId) {
-        entity.setIdentifier(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
@@ -87,7 +91,7 @@ public class DoubleGameDao extends AbstractDao<DoubleGame, Long> {
     @Override
     public Long getKey(DoubleGame entity) {
         if(entity != null) {
-            return entity.getIdentifier();
+            return entity.getId();
         } else {
             return null;
         }

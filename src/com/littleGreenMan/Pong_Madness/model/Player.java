@@ -13,13 +13,14 @@ import de.greenrobot.dao.DaoException;
  */
 public class Player {
 
-    private long identifier;
+    private Long id;
     private Boolean active;
     private String email;
     private String handedness;
     private String photo;
-    private java.util.Date sinceDate;
+    private String sinceDate;
     private String userName;
+    private String company;
     private Long teamId;
 
     /** Used to resolve relations */
@@ -42,18 +43,19 @@ public class Player {
     public Player() {
     }
 
-    public Player(long identifier) {
-        this.identifier = identifier;
+    public Player(Long id) {
+        this.id = id;
     }
 
-    public Player(long identifier, Boolean active, String email, String handedness, String photo, java.util.Date sinceDate, String userName, Long teamId) {
-        this.identifier = identifier;
+    public Player(Long id, Boolean active, String email, String handedness, String photo, String sinceDate, String userName, String company, Long teamId) {
+        this.id = id;
         this.active = active;
         this.email = email;
         this.handedness = handedness;
         this.photo = photo;
         this.sinceDate = sinceDate;
         this.userName = userName;
+        this.company = company;
         this.teamId = teamId;
     }
 
@@ -63,12 +65,12 @@ public class Player {
         myDao = daoSession != null ? daoSession.getPlayerDao() : null;
     }
 
-    public long getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentifier(long identifier) {
-        this.identifier = identifier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Boolean getActive() {
@@ -103,11 +105,11 @@ public class Player {
         this.photo = photo;
     }
 
-    public java.util.Date getSinceDate() {
+    public String getSinceDate() {
         return sinceDate;
     }
 
-    public void setSinceDate(java.util.Date sinceDate) {
+    public void setSinceDate(String sinceDate) {
         this.sinceDate = sinceDate;
     }
 
@@ -117,6 +119,14 @@ public class Player {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public Long getTeamId() {
@@ -147,7 +157,7 @@ public class Player {
     public void setTeam(Team team) {
         synchronized (this) {
             this.team = team;
-            teamId = team == null ? null : team.getIdentifier();
+            teamId = team == null ? null : team.getId();
             team__resolvedKey = teamId;
         }
     }
@@ -159,7 +169,7 @@ public class Player {
                 throw new DaoException("Entity is detached from DAO context");
             }
             LeaderboardPlayerDao targetDao = daoSession.getLeaderboardPlayerDao();
-            List<LeaderboardPlayer> leaderboardPlayerListNew = targetDao._queryPlayer_LeaderboardPlayerList(identifier);
+            List<LeaderboardPlayer> leaderboardPlayerListNew = targetDao._queryPlayer_LeaderboardPlayerList(id);
             synchronized (this) {
                 if(leaderboardPlayerList == null) {
                     leaderboardPlayerList = leaderboardPlayerListNew;
@@ -181,7 +191,7 @@ public class Player {
                 throw new DaoException("Entity is detached from DAO context");
             }
             PlayerTournementDao targetDao = daoSession.getPlayerTournementDao();
-            List<PlayerTournement> playerTournementListNew = targetDao._queryPlayer_PlayerTournementList(identifier);
+            List<PlayerTournement> playerTournementListNew = targetDao._queryPlayer_PlayerTournementList(id);
             synchronized (this) {
                 if(playerTournementList == null) {
                     playerTournementList = playerTournementListNew;
@@ -203,7 +213,7 @@ public class Player {
                 throw new DaoException("Entity is detached from DAO context");
             }
             PlayerBinomeDao targetDao = daoSession.getPlayerBinomeDao();
-            List<PlayerBinome> playerBinomeListNew = targetDao._queryPlayer_PlayerBinomeList(identifier);
+            List<PlayerBinome> playerBinomeListNew = targetDao._queryPlayer_PlayerBinomeList(id);
             synchronized (this) {
                 if(playerBinomeList == null) {
                     playerBinomeList = playerBinomeListNew;
@@ -225,7 +235,7 @@ public class Player {
                 throw new DaoException("Entity is detached from DAO context");
             }
             SimpleParticipantDao targetDao = daoSession.getSimpleParticipantDao();
-            List<SimpleParticipant> simpleParticipantListNew = targetDao._queryPlayer_SimpleParticipantList(identifier);
+            List<SimpleParticipant> simpleParticipantListNew = targetDao._queryPlayer_SimpleParticipantList(id);
             synchronized (this) {
                 if(simpleParticipantList == null) {
                     simpleParticipantList = simpleParticipantListNew;

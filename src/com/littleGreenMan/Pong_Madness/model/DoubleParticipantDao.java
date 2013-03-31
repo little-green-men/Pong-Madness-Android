@@ -26,7 +26,7 @@ public class DoubleParticipantDao extends AbstractDao<DoubleParticipant, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Identifier = new Property(0, long.class, "identifier", true, "IDENTIFIER");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Score = new Property(1, Integer.class, "score", false, "SCORE");
         public final static Property DoubleGameId = new Property(2, Long.class, "doubleGameId", false, "DOUBLE_GAME_ID");
         public final static Property PbinomeId = new Property(3, Long.class, "pbinomeId", false, "PBINOME_ID");
@@ -49,7 +49,7 @@ public class DoubleParticipantDao extends AbstractDao<DoubleParticipant, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'DOUBLE_PARTICIPANT' (" + //
-                "'IDENTIFIER' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: identifier
+                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "'SCORE' INTEGER," + // 1: score
                 "'DOUBLE_GAME_ID' INTEGER," + // 2: doubleGameId
                 "'PBINOME_ID' INTEGER);"); // 3: pbinomeId
@@ -65,7 +65,11 @@ public class DoubleParticipantDao extends AbstractDao<DoubleParticipant, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, DoubleParticipant entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getIdentifier());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         Integer score = entity.getScore();
         if (score != null) {
@@ -92,14 +96,14 @@ public class DoubleParticipantDao extends AbstractDao<DoubleParticipant, Long> {
     /** @inheritdoc */
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public DoubleParticipant readEntity(Cursor cursor, int offset) {
         DoubleParticipant entity = new DoubleParticipant( //
-            cursor.getLong(offset + 0), // identifier
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1), // score
             cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2), // doubleGameId
             cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3) // pbinomeId
@@ -110,7 +114,7 @@ public class DoubleParticipantDao extends AbstractDao<DoubleParticipant, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, DoubleParticipant entity, int offset) {
-        entity.setIdentifier(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setScore(cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1));
         entity.setDoubleGameId(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
         entity.setPbinomeId(cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3));
@@ -119,7 +123,7 @@ public class DoubleParticipantDao extends AbstractDao<DoubleParticipant, Long> {
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(DoubleParticipant entity, long rowId) {
-        entity.setIdentifier(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
@@ -127,7 +131,7 @@ public class DoubleParticipantDao extends AbstractDao<DoubleParticipant, Long> {
     @Override
     public Long getKey(DoubleParticipant entity) {
         if(entity != null) {
-            return entity.getIdentifier();
+            return entity.getId();
         } else {
             return null;
         }
