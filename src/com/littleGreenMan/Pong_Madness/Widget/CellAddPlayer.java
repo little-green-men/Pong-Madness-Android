@@ -91,4 +91,8 @@ public class CellAddPlayer extends RelativeLayout implements View.OnClickListene
             }
         }
     }
+
+    public void makeEditTextEmpty() {
+        editText.setText(null);
+    }
 }

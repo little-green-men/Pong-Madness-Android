@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_height="556dip"
-        android:layout_width="540dip"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         >
-<ImageView
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:src="@drawable/background"
-    android:scaleType="centerCrop"/>
+
 
 <LinearLayout
               android:orientation="vertical"
-              android:layout_height="match_parent"
-              android:layout_width="match_parent"
+              android:layout_height="556dip"
+              android:layout_width="540dip"
+              android:background="@drawable/background"
         >
     <FrameLayout
       android:layout_width="match_parent"
@@ -185,10 +182,7 @@
                     android:layout_margin="18dp"
                     android:textColor="@color/player_startdate"
                     android:text="Handedness"
-                    android:gravity="center"
-
-
-                    />
+                    android:gravity="center"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

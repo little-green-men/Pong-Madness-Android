@@ -50,11 +50,20 @@ public class ThePlayers extends FragmentActivity {
     }
 
     private void displayPlayers() {
-        sortPlayersByName();
-    }
+        for (final Player player: players) {
+            CellPlayer newPlayerCell = new CellPlayer(ThePlayers.this);
+            newPlayerCell.setName(player.getUserName());
+            newPlayerCell.setSinceDate("Since "+ player.getSinceDate());
+            newPlayerCell.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    PlayerDialogFragment dialog = PlayerDialogFragment.newInstance(ThePlayers.this);
+                    dialog.setPlayer(player);
+                    dialog.show(getSupportFragmentManager(), "player");
+                }
+            });
+            container.addView(newPlayerCell, Math.min(players.indexOf(player) +1, container.getChildCount()));
 
-    private void sortPlayersByName() {
-
+        }
     }
 
     public void addFirstCell() {
@@ -67,7 +76,7 @@ public class ThePlayers extends FragmentActivity {
 
                 //Today date
                 Calendar cal = Calendar.getInstance();
-                SimpleDateFormat format = new SimpleDateFormat("MM/dd/yy");
+                SimpleDateFormat format = new SimpleDateFormat("MMM d, yyyy");
                 Date today = new Date(cal.getTimeInMillis());
                 String dateFormated = format.format(today);
 
@@ -80,8 +89,8 @@ public class ThePlayers extends FragmentActivity {
                 PlayerClient.addPlayerWithName(newPlayer);
                 CellPlayer newPlayerCell = new CellPlayer(ThePlayers.this);
                 newPlayerCell.setName(addPlayer.getEditTextName());
-                newPlayerCell.setSinceDate(dateFormated);
-
+                newPlayerCell.setSinceDate("Since "+ dateFormated);
+                addPlayer.makeEditTextEmpty();
                 newPlayerCell.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         PlayerDialogFragment dialog = PlayerDialogFragment.newInstance(ThePlayers.this);

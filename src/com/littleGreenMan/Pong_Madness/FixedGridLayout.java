@@ -64,9 +64,15 @@ public class FixedGridLayout extends ViewGroup {
         }
         // Use the size our parents gave us, but default to a minimum size to avoid
         // clipping transitioning children
-        int minCount =  count > 3 ? count : 3;
+        int minCount =  count > 5 ? count : 5;
+        int row = 1;
+        if (count % 5 == 0) {
+            row = count/5;
+        } else {
+            row = count/5+1;
+        }
         setMeasuredDimension(resolveSize(mCellWidth * minCount, widthMeasureSpec),
-                resolveSize(mCellHeight * minCount, heightMeasureSpec));
+                mCellHeight * row);
     }
 
     @Override

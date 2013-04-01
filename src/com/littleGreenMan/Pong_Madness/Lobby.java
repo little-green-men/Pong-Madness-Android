@@ -58,7 +58,7 @@ public class Lobby extends Activity implements View.OnClickListener {
         quickgameImageView.setOnClickListener(this);
         fullScreenFramelayout.setOnClickListener(this);
         singleButton.setOnClickListener(this);
-
+        theplayersImageView.setOnClickListener(this);
         //Add listener to know modify layout
         ViewTreeObserver observer = mainLayout.getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
@@ -82,8 +82,7 @@ public class Lobby extends Activity implements View.OnClickListener {
             makeButtonAppear();
             fullScreenFramelayout.bringToFront();
         } else if (v.getId() == R.id.lobby_button_single) {
-             Intent intent = new Intent(this, ThePlayers.class);
-            startActivity(intent);
+
         } else if (v.getId() == R.id.lobby_button_double) {
 
         } else if (v.getId() == R.id.lobby_framelayout_fullscreen) {
@@ -110,6 +109,9 @@ public class Lobby extends Activity implements View.OnClickListener {
             theplayersImageView.startAnimation(theplayersAnimationReverse);
 
             makeButtonDisappear();
+        } else if (R.id.lobby_imageview_theplayers == v.getId()) {
+            Intent intent = new Intent(this, ThePlayers.class);
+            startActivity(intent);
         }
     }
 
