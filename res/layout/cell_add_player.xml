@@ -5,7 +5,9 @@
                 android:layout_margin="10dip"
                 android:layout_width="@dimen/theplayers_width_addplayer"
                 android:layout_height="@dimen/theplayers_height_addplayer"
-                android:background="@drawable/player_add_button">
+                android:background="@drawable/player_add"
+
+        >
 
         <EditText
             android:id="@+id/cell_add_edittext"
@@ -16,6 +18,10 @@
             android:background="@android:color/transparent"
             android:layout_marginBottom="10dp"
             android:gravity="center"
+            android:paddingBottom="12dip"
+            android:focusableInTouchMode="true"
+            android:imeOptions="actionGo"
+            android:inputType="textPersonName"
         />
 
 </RelativeLayout>

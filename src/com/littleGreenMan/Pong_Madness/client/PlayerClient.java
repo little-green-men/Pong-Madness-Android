@@ -3,6 +3,8 @@ package com.littleGreenMan.Pong_Madness.client;
 import com.littleGreenMan.Pong_Madness.DatabaseManager;
 import com.littleGreenMan.Pong_Madness.model.Player;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: elodieferrais
@@ -38,5 +40,9 @@ public class PlayerClient {
 
     public static int getPointsOfPlayer(Player player) {
         return 0;
+    }
+
+    public static List<Player> getAllPlayer() {
+        return DatabaseManager.getDaoSession().getPlayerDao().loadAll();
     }
 }

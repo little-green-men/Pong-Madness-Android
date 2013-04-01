@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Entity mapped to table PLAYER.
  */
-public class Player {
+public class Player implements Comparable {
 
     private Long id;
     private Boolean active;
@@ -274,7 +274,16 @@ public class Player {
         myDao.refresh(this);
     }
 
+
+
     // KEEP METHODS - put your custom methods here
+    @Override
+    public int compareTo(Object another) {
+        Player otherPlayer = (Player) another;
+        String name = getUserName();
+        String nameToCompare = otherPlayer.getUserName();
+        return name.compareTo(nameToCompare);  //To change body of implemented methods use File | Settings | File Templates.
+    }
     // KEEP METHODS END
 
 }

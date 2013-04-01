@@ -12,8 +12,7 @@ import com.littleGreenMan.Pong_Madness.client.PlayerClient;
 import com.littleGreenMan.Pong_Madness.model.Player;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,7 +23,9 @@ import java.util.Date;
  */
 public class ThePlayers extends FragmentActivity {
 
-    ViewGroup container = null;
+    private ViewGroup container = null;
+    private ViewGroup parent;
+    private List<Player> players;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,47 +33,64 @@ public class ThePlayers extends FragmentActivity {
         setContentView(R.layout.the_players);
 
         container = new FixedGridLayout(this);
-        ((FixedGridLayout)container).setCellHeight(224);
-        ((FixedGridLayout)container).setCellWidth(175);
+        ((FixedGridLayout)container).setCellHeight(246);
+        ((FixedGridLayout)container).setCellWidth(196);
         final LayoutTransition transitioner = new LayoutTransition();
         container.setLayoutTransition(transitioner);
 
-        ViewGroup parent = (ViewGroup) findViewById(R.id.theplayers_layout_main);
-
+        parent = (ViewGroup) findViewById(R.id.theplayers_layout_main);
         parent.addView(container);
-        final CellAddPlayer addPlayer = new CellAddPlayer(ThePlayers.this);
 
+        addFirstCell();
+        players = PlayerClient.getAllPlayer();
+        Collections.sort(players);
+        displayPlayers();
+
+
+    }
+
+    private void displayPlayers() {
+        sortPlayersByName();
+    }
+
+    private void sortPlayersByName() {
+
+    }
+
+    public void addFirstCell() {
+        final CellAddPlayer addPlayer = new CellAddPlayer(ThePlayers.this, parent);
         container.addView(addPlayer , Math.min(0, container.getChildCount()));
 
 
-       addPlayer.setClickListenerToAddplayer(new View.OnClickListener() {
-           public void onClick(View v) {
+        addPlayer.setClickListenerToAddplayer(new View.OnClickListener() {
+            public void onClick(View v) {
 
-               //Today date
-               Calendar cal = Calendar.getInstance();
-               SimpleDateFormat format = new SimpleDateFormat("MM/dd/yy");
-               Date today = new Date(cal.getTimeInMillis());
-               String dateFormated = format.format(today);
+                //Today date
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat format = new SimpleDateFormat("MM/dd/yy");
+                Date today = new Date(cal.getTimeInMillis());
+                String dateFormated = format.format(today);
 
-               //New player creation
-               final Player newPlayer = new Player();
-               newPlayer.setUserName(addPlayer.getEditTextName());
-               newPlayer.setSinceDate(dateFormated);
+                //New player creation
+                final Player newPlayer = new Player();
+                newPlayer.setUserName(addPlayer.getEditTextName());
+                newPlayer.setSinceDate(dateFormated);
+                players.add(newPlayer);
+                Collections.sort(players);
+                PlayerClient.addPlayerWithName(newPlayer);
+                CellPlayer newPlayerCell = new CellPlayer(ThePlayers.this);
+                newPlayerCell.setName(addPlayer.getEditTextName());
+                newPlayerCell.setSinceDate(dateFormated);
 
-               PlayerClient.addPlayerWithName(newPlayer);
-               CellPlayer newPlayerCell = new CellPlayer(ThePlayers.this);
-               newPlayerCell.setName(addPlayer.getEditTextName());
-               newPlayerCell.setSinceDate(dateFormated);
-
-               newPlayerCell.setOnClickListener(new View.OnClickListener() {
-                   public void onClick(View v) {
-                       PlayerDialogFragment dialog = PlayerDialogFragment.newInstance(ThePlayers.this);
-                       dialog.setPlayer(newPlayer);
-                       dialog.show(getSupportFragmentManager(), "player");
-                   }
-               });
-               container.addView(newPlayerCell, Math.min(1, container.getChildCount()));
-           }
-       });
+                newPlayerCell.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        PlayerDialogFragment dialog = PlayerDialogFragment.newInstance(ThePlayers.this);
+                        dialog.setPlayer(newPlayer);
+                        dialog.show(getSupportFragmentManager(), "player");
+                    }
+                });
+                container.addView(newPlayerCell, Math.min(players.indexOf(newPlayer) +1, container.getChildCount()));
+            }
+        });
     }
 }
