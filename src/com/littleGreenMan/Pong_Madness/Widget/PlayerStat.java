@@ -51,9 +51,9 @@ public class PlayerStat extends LinearLayout {
         played.setText(String.valueOf(PlayerClient.getPlayedOfPlayer(player)));
 
         if("L".equals(player.getHandedness())) {
-            hand.setBackgroundDrawable(getResources().getDrawable(R.drawable.edit_handedness_left_active));
+            hand.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_left_active));
         } else if ("R".equals(player.getHandedness())) {
-            hand.setBackgroundDrawable(getResources().getDrawable(R.drawable.edit_handedness_right_active));
+            hand.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_right_active));
         }
     }
 

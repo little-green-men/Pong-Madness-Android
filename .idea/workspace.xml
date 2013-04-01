@@ -42,14 +42,14 @@
     <file path="/Lobby.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364788000665" ignored="false" />
     <file path="/btn_gametype.xml" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364086234542" ignored="false" />
     <file path="/a.xml" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364086252543" ignored="false" />
-    <file path="/fragment.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364679047510" ignored="false" />
+    <file path="/fragment.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364794758023" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364091061857" ignored="false" />
     <file path="/Rotation3dAnimation.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364106450600" ignored="false" />
     <file path="/ModelGenerator.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364118051399" ignored="false" />
     <file path="/Main.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364684740951" ignored="false" />
-    <file path="/ThePlayers.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364791808611" ignored="false" />
+    <file path="/ThePlayers.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364797887200" ignored="false" />
     <file path="/Dummy.txt" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364697118493" ignored="false" />
-    <file path="/the_players.xml" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364791893778" ignored="false" />
+    <file path="/the_players.xml" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364798125641" ignored="false" />
     <file path="/dimen.xml" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364748680272" ignored="false" />
     <file path="/LayoutAnimation.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364158245087" ignored="false" />
     <file path="$PROJECT_DIR$/gen/com/littleGreenMan/Pong_Madness/BuildConfig.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364190431678" ignored="false" />
@@ -59,17 +59,17 @@
     <file path="/cell_player.xml" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364788177741" ignored="false" />
     <file path="/colors.xml" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364159811718" ignored="false" />
     <file path="/CellPlayer.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364689185829" ignored="false" />
-    <file path="/CellAddPlayer.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364791298655" ignored="false" />
+    <file path="/CellAddPlayer.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364798403580" ignored="false" />
     <file path="/cell_add_player.xml" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364758105187" ignored="false" />
     <file path="/DatabaseManager.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364675003744" ignored="false" />
     <file path="/Player.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364784969208" ignored="false" />
     <file path="/PongMadnessApplication.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364677405734" ignored="false" />
     <file path="/PlayerClient.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364783956691" ignored="false" />
     <file path="/players_settings.xml" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364691587165" ignored="false" />
-    <file path="/PlayerDialogFragment.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364747778624" ignored="false" />
+    <file path="/PlayerDialogFragment.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364796162480" ignored="false" />
     <file path="/player_dialog.xml" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364790431551" ignored="false" />
     <file path="/player_statistic.xml" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364747177835" ignored="false" />
-    <file path="/PlayerStat.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364748027879" ignored="false" />
+    <file path="/PlayerStat.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364794998801" ignored="false" />
     <file path="/FixedGridLayout.java" changelist="42cc16ca-80ae-4571-8f71-900fd4d45b2f" time="1364794001550" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +135,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/ThePlayers.java" line="29" class="com.littleGreenMan.Pong_Madness.ThePlayers" package="com.littleGreenMan.Pong_Madness">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/ThePlayers.java" line="31" class="com.littleGreenMan.Pong_Madness.ThePlayers" package="com.littleGreenMan.Pong_Madness">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -177,35 +177,49 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellAddPlayer.java" line="79" class="com.littleGreenMan.Pong_Madness.Widget.CellAddPlayer" package="com.littleGreenMan.Pong_Madness.Widget">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellAddPlayer.java" line="61" class="com.littleGreenMan.Pong_Madness.Widget.CellAddPlayer" package="com.littleGreenMan.Pong_Madness.Widget">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/PongMadnessApplication.java" line="16" class="com.littleGreenMan.Pong_Madness.PongMadnessApplication" package="com.littleGreenMan.Pong_Madness">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerStat.java" line="52" class="com.littleGreenMan.Pong_Madness.Widget.PlayerStat" package="com.littleGreenMan.Pong_Madness.Widget">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerDialogFragment.java" line="85" class="com.littleGreenMan.Pong_Madness.Widget.PlayerDialogFragment" package="com.littleGreenMan.Pong_Madness.Widget">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellAddPlayer.java" line="63" class="com.littleGreenMan.Pong_Madness.Widget.CellAddPlayer" package="com.littleGreenMan.Pong_Madness.Widget">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -233,16 +247,19 @@
       <file leaf-file-name="ThePlayers.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/ThePlayers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="76" selection-start="2319" selection-end="2319" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="43" column="70" selection-start="1567" selection-end="1567" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#2094#2419#0" expanded="true" />
+                <element signature="e#2404#2405#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FixedGridLayout.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FixedGridLayout.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/FixedGridLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="16" selection-start="2579" selection-end="2579" vertical-scroll-proportion="0.83870965">
+            <state line="65" column="39" selection-start="2295" selection-end="2295" vertical-scroll-proportion="-3.8076923">
               <folding />
             </state>
           </provider>
@@ -269,7 +286,7 @@
       <file leaf-file-name="PongMadnessApplication.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/PongMadnessApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0">
+            <state line="16" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -278,7 +295,7 @@
       <file leaf-file-name="the_players.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/the_players.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="13" selection-start="498" selection-end="498" vertical-scroll-proportion="-3.4615386">
+            <state line="14" column="47" selection-start="632" selection-end="632" vertical-scroll-proportion="-2.4807692">
               <folding />
             </state>
           </provider>
@@ -287,22 +304,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cell_add_player.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/cell_add_player.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="57" selection-start="418" selection-end="418" vertical-scroll-proportion="-1.1538461">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CellAddPlayer.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CellAddPlayer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellAddPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="16" selection-start="1821" selection-end="1821" vertical-scroll-proportion="0.0">
+            <state line="102" column="0" selection-start="3826" selection-end="3826" vertical-scroll-proportion="0.5068493">
               <folding />
             </state>
           </provider>
@@ -311,21 +316,18 @@
       <file leaf-file-name="PlayerDialogFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerDialogFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="60" selection-start="1741" selection-end="1741" vertical-scroll-proportion="0.0">
+            <state line="115" column="0" selection-start="4982" selection-end="4982" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="player_dialog.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/player_dialog.xml">
+      <file leaf-file-name="PlayerStat.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerStat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="205" column="56" selection-start="7942" selection-end="7942" vertical-scroll-proportion="-2.6538463">
+            <state line="52" column="0" selection-start="1726" selection-end="1726" vertical-scroll-proportion="0.0">
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
           </provider>
         </entry>
       </file>
@@ -342,8 +344,6 @@
         <option value="$PROJECT_DIR$/res/layout/players_settings.xml" />
         <option value="$PROJECT_DIR$/PongModelGenerator/src/Main.java" />
         <option value="$PROJECT_DIR$/res/layout/player_statistic.xml" />
-        <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerDialogFragment.java" />
-        <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerStat.java" />
         <option value="$PROJECT_DIR$/res/values/dimen.xml" />
         <option value="$PROJECT_DIR$/res/layout/cell_add_player.xml" />
         <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/client/PlayerClient.java" />
@@ -351,10 +351,12 @@
         <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Lobby.java" />
         <option value="$PROJECT_DIR$/res/layout/cell_player.xml" />
         <option value="$PROJECT_DIR$/res/layout/player_dialog.xml" />
-        <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellAddPlayer.java" />
+        <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/FixedGridLayout.java" />
+        <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerStat.java" />
+        <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerDialogFragment.java" />
         <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/ThePlayers.java" />
         <option value="$PROJECT_DIR$/res/layout/the_players.xml" />
-        <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/FixedGridLayout.java" />
+        <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellAddPlayer.java" />
       </list>
     </option>
   </component>
@@ -775,18 +777,18 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22022684" sideWeight="0.6180556" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39756945" sideWeight="0.70321363" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38194445" sideWeight="0.15784499" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39756945" sideWeight="0.6890359" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38194445" sideWeight="0.19754253" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3263889" sideWeight="0.44328922" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25259516" sideWeight="0.68809074" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3263889" sideWeight="0.41965973" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2934028" sideWeight="0.68809074" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3263889" sideWeight="0.49243855" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32868218" sideWeight="0.67681897" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20226844" sideWeight="0.6180556" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38194445" sideWeight="0.83553874" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38194445" sideWeight="0.7958412" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22022684" sideWeight="0.6006944" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -857,11 +859,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/drawable-mdpi/player_card_medium.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../sdk-Android/adt-bundle-mac-x86_64-20130219/sdk/sources/android-14/android/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4455" column="0" selection-start="166954" selection-end="166954" vertical-scroll-proportion="0.33215547">
@@ -904,26 +901,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerDialogFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="60" selection-start="1741" selection-end="1741" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/cell_add_player.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="57" selection-start="418" selection-end="418" vertical-scroll-proportion="-1.1538461">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/player_dialog.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="205" column="56" selection-start="7942" selection-end="7942" vertical-scroll-proportion="-2.6538463">
           <folding />
         </state>
       </provider>
@@ -945,23 +925,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/PongMadnessApplication.java">
+    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/FixedGridLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0">
+        <state line="65" column="39" selection-start="2295" selection-end="2295" vertical-scroll-proportion="-3.8076923">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellAddPlayer.java">
+    <entry file="file://$PROJECT_DIR$/res/layout/player_dialog.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="16" selection-start="1821" selection-end="1821" vertical-scroll-proportion="0.0">
+        <state line="194" column="35" selection-start="7327" selection-end="7327" vertical-scroll-proportion="0.028846154">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerStat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="0" selection-start="1726" selection-end="1726" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerDialogFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="0" selection-start="4982" selection-end="4982" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/the_players.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="498" selection-end="498" vertical-scroll-proportion="-3.4615386">
+        <state line="14" column="47" selection-start="632" selection-end="632" vertical-scroll-proportion="-2.4807692">
           <folding />
         </state>
       </provider>
@@ -971,14 +968,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/ThePlayers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="76" selection-start="2319" selection-end="2319" vertical-scroll-proportion="0.0">
+        <state line="43" column="70" selection-start="1567" selection-end="1567" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#2094#2419#0" expanded="true" />
+            <element signature="e#2404#2405#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/PongMadnessApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/FixedGridLayout.java">
+    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellAddPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="16" selection-start="2579" selection-end="2579" vertical-scroll-proportion="0.83870965">
+        <state line="102" column="0" selection-start="3826" selection-end="3826" vertical-scroll-proportion="0.5068493">
           <folding />
         </state>
       </provider>

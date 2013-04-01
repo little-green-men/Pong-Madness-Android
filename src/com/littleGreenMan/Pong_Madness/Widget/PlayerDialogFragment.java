@@ -88,9 +88,9 @@ public class PlayerDialogFragment extends DialogFragment implements View.OnClick
             save.setVisibility(View.GONE);
             player.setEmail(email.getText().toString().trim());
             player.setCompany(company.getText().toString().trim());
-            if (righthand.getBackground() == getResources().getDrawable(R.drawable.edit_handedness_right_active)) {
+            if (righthand.getDrawable() == getResources().getDrawable(R.drawable.edit_handedness_right_active)) {
                 player.setHandedness("R");
-            } else if (lefthand.getBackground() == getResources().getDrawable(R.drawable.edit_handedness_left_active)) {
+            } else if (lefthand.getDrawable() == getResources().getDrawable(R.drawable.edit_handedness_left_active)) {
                 player.setHandedness("L");
             }
             PlayerClient.updatePlayer(player);
@@ -98,19 +98,22 @@ public class PlayerDialogFragment extends DialogFragment implements View.OnClick
             //viewSwitcher.setInAnimation(context,android.R.anim.slide_in_left);
             //viewSwitcher.setOutAnimation(context, android.R.anim.slide_out_right);
         } else if (R.id.player_dialog_imageview_righthand == v.getId()) {
-            if (v.getBackground() != getResources().getDrawable(R.drawable.edit_handedness_right_active)) {
-                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.edit_handedness_right_active));
-                lefthand.setBackgroundDrawable(getResources().getDrawable(R.drawable.edit_handedness_left_inactive));
+            ImageView view = (ImageView) v;
+            if (view.getDrawable() != getResources().getDrawable(R.drawable.edit_handedness_right_active)) {
+                view.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_right_active));
+                lefthand.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_left_inactive));
             }
         }else if (R.id.player_dialog_imageview_lefthand == v.getId()) {
-            if (v.getBackground() != getResources().getDrawable(R.drawable.edit_handedness_left_active)) {
-                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.edit_handedness_left_active));
-                righthand.setBackgroundDrawable(getResources().getDrawable(R.drawable.edit_handedness_right_inactive));
+            ImageView view = (ImageView) v;
+            if (view.getDrawable() != getResources().getDrawable(R.drawable.edit_handedness_left_active)) {
+                view.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_left_active));
+                righthand.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_right_inactive));
             }
 
         }
     }
 
     private void refreshPlayerDialog() {
+        playerStat.setPlayerAndUpdate(player);
     }
 }

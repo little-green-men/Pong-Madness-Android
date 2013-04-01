@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import com.littleGreenMan.Pong_Madness.Widget.CellAddPlayer;
 import com.littleGreenMan.Pong_Madness.Widget.CellPlayer;
 import com.littleGreenMan.Pong_Madness.Widget.PlayerDialogFragment;
@@ -24,7 +25,8 @@ import java.util.*;
 public class ThePlayers extends FragmentActivity {
 
     private ViewGroup container = null;
-    private ViewGroup parent;
+    private ScrollView parentScrollview;
+    private ViewGroup parentLayout;
     private List<Player> players;
 
     @Override
@@ -38,8 +40,9 @@ public class ThePlayers extends FragmentActivity {
         final LayoutTransition transitioner = new LayoutTransition();
         container.setLayoutTransition(transitioner);
 
-        parent = (ViewGroup) findViewById(R.id.theplayers_layout_main);
-        parent.addView(container);
+        parentLayout = (ViewGroup) findViewById(R.id.theplayers_layout_main);
+        parentScrollview = (ScrollView) findViewById(R.id.theplayers_scrollview);
+        parentScrollview.addView(container);
 
         addFirstCell();
         players = PlayerClient.getAllPlayer();
@@ -67,7 +70,7 @@ public class ThePlayers extends FragmentActivity {
     }
 
     public void addFirstCell() {
-        final CellAddPlayer addPlayer = new CellAddPlayer(ThePlayers.this, parent);
+        final CellAddPlayer addPlayer = new CellAddPlayer(ThePlayers.this, parentScrollview, parentLayout);
         container.addView(addPlayer , Math.min(0, container.getChildCount()));
 
 
@@ -89,7 +92,7 @@ public class ThePlayers extends FragmentActivity {
                 PlayerClient.addPlayerWithName(newPlayer);
                 CellPlayer newPlayerCell = new CellPlayer(ThePlayers.this);
                 newPlayerCell.setName(addPlayer.getEditTextName());
-                newPlayerCell.setSinceDate("Since "+ dateFormated);
+                newPlayerCell.setSinceDate("Since " + dateFormated);
                 addPlayer.makeEditTextEmpty();
                 newPlayerCell.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
