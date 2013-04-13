@@ -17,6 +17,7 @@
 package com.littleGreenMan.Pong_Madness;
 
 import android.content.Context;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -35,18 +36,20 @@ import android.view.ViewGroup;
 public class FixedGridLayout extends ViewGroup {
     int mCellWidth;
     int mCellHeight;
+    Context context;
 
     public FixedGridLayout(Context context) {
         super(context);
+        this.context = context;
     }
 
     public void setCellWidth(int px) {
-        mCellWidth = px;
+        mCellWidth = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, px, context.getResources().getDisplayMetrics()));
         requestLayout();
     }
 
     public void setCellHeight(int px) {
-        mCellHeight = px;
+        mCellHeight = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, px, context.getResources().getDisplayMetrics()));
         requestLayout();
     }
 
