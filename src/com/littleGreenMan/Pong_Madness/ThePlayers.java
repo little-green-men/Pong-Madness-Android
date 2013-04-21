@@ -54,9 +54,7 @@ public class ThePlayers extends FragmentActivity {
 
     private void displayPlayers() {
         for (final Player player: players) {
-            CellPlayer newPlayerCell = new CellPlayer(ThePlayers.this);
-            newPlayerCell.setName(player.getUserName());
-            newPlayerCell.setSinceDate("Since "+ player.getSinceDate());
+            CellPlayer newPlayerCell = new CellPlayer(ThePlayers.this, player);
             newPlayerCell.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     PlayerDialogFragment dialog = PlayerDialogFragment.newInstance(ThePlayers.this);
@@ -89,10 +87,8 @@ public class ThePlayers extends FragmentActivity {
                 newPlayer.setSinceDate(dateFormated);
                 players.add(newPlayer);
                 Collections.sort(players);
-                PlayerClient.addPlayerWithName(newPlayer);
-                CellPlayer newPlayerCell = new CellPlayer(ThePlayers.this);
-                newPlayerCell.setName(addPlayer.getEditTextName());
-                newPlayerCell.setSinceDate("Since " + dateFormated);
+                PlayerClient.addPlayer(newPlayer);
+                CellPlayer newPlayerCell = new CellPlayer(ThePlayers.this, newPlayer);
                 addPlayer.makeEditTextEmpty();
                 newPlayerCell.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {

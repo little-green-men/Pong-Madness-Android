@@ -18,8 +18,10 @@ package com.littleGreenMan.Pong_Madness;
 
 import android.content.Context;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 /**
  * A layout that arranges its children in a grid.  The size of the
@@ -33,7 +35,7 @@ import android.view.ViewGroup;
  * <p>This class was copied from the FixedGridLayout Api demo; see that demo for
  * more information on using the layout.</p>
  */
-public class FixedGridLayout extends ViewGroup {
+public class FixedGridLayout extends RelativeLayout {
     int mCellWidth;
     int mCellHeight;
     Context context;
@@ -43,13 +45,13 @@ public class FixedGridLayout extends ViewGroup {
         this.context = context;
     }
 
-    public void setCellWidth(int px) {
-        mCellWidth = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, px, context.getResources().getDisplayMetrics()));
+    public void setCellWidth(int dp) {
+        mCellWidth = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics()));
         requestLayout();
     }
 
-    public void setCellHeight(int px) {
-        mCellHeight = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, px, context.getResources().getDisplayMetrics()));
+    public void setCellHeight(int dp) {
+        mCellHeight = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics()));
         requestLayout();
     }
 
@@ -59,6 +61,7 @@ public class FixedGridLayout extends ViewGroup {
                 MeasureSpec.AT_MOST);
         int cellHeightSpec = MeasureSpec.makeMeasureSpec(mCellHeight,
                 MeasureSpec.AT_MOST);
+        setGravity(Gravity.RIGHT);
 
         int count = getChildCount();
         for (int index=0; index<count; index++) {

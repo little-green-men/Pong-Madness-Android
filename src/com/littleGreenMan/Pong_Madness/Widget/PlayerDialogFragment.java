@@ -34,6 +34,8 @@ public class PlayerDialogFragment extends DialogFragment implements View.OnClick
     private LinearLayout lytToSave;
     private LinearLayout lytToEdit;
 
+    private String handSelected;
+
     private ViewSwitcher viewSwitcher;
     public static PlayerDialogFragment newInstance(Context context) {
         PlayerDialogFragment frag = new PlayerDialogFragment();
@@ -49,6 +51,7 @@ public class PlayerDialogFragment extends DialogFragment implements View.OnClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getDialog().setTitle("aaa");
         View v = inflater.inflate(R.layout.player_dialog, container, true);
+        getDialog().getWindow().setBackgroundDrawable(getResources().getDrawable(android.R.color.transparent));
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         edit = (Button) v.findViewById(R.id.player_dialog_button_edit);
@@ -62,7 +65,11 @@ public class PlayerDialogFragment extends DialogFragment implements View.OnClick
         playerStat = (PlayerStat) v.findViewById(R.id.player_dialog_playerstat);
         viewSwitcher = (ViewSwitcher) v.findViewById(R.id.player_dialog_switcher);
 
-        playerStat.setPlayerAndUpdate(player);
+        if (player != null) {
+            playerStat.setPlayerAndUpdate(player);
+            updateForm();
+        }
+
 
         edit.setOnClickListener(this);
         save.setOnClickListener(this);
@@ -71,6 +78,19 @@ public class PlayerDialogFragment extends DialogFragment implements View.OnClick
 
 
         return v;
+    }
+
+    private void updateForm() {
+
+        email.setText(player.getEmail());
+        company.setText(player.getCompany());
+        handSelected = player.getHandedness();
+        if ("L".equals(handSelected)) {
+            lefthand.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_left_active));
+        } else if ("R".equals(handSelected)) {
+            righthand.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_right_active));
+        }
+
     }
 
 
@@ -86,30 +106,28 @@ public class PlayerDialogFragment extends DialogFragment implements View.OnClick
             viewSwitcher.showPrevious();
             edit.setVisibility(View.VISIBLE);
             save.setVisibility(View.GONE);
+            //player.setUserName(player.getUserName());
             player.setEmail(email.getText().toString().trim());
             player.setCompany(company.getText().toString().trim());
-            if (righthand.getDrawable() == getResources().getDrawable(R.drawable.edit_handedness_right_active)) {
-                player.setHandedness("R");
-            } else if (lefthand.getDrawable() == getResources().getDrawable(R.drawable.edit_handedness_left_active)) {
-                player.setHandedness("L");
-            }
+            player.setHandedness(handSelected);
             PlayerClient.updatePlayer(player);
             refreshPlayerDialog();
             //viewSwitcher.setInAnimation(context,android.R.anim.slide_in_left);
             //viewSwitcher.setOutAnimation(context, android.R.anim.slide_out_right);
         } else if (R.id.player_dialog_imageview_righthand == v.getId()) {
             ImageView view = (ImageView) v;
-            if (view.getDrawable() != getResources().getDrawable(R.drawable.edit_handedness_right_active)) {
-                view.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_right_active));
+            view.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_right_active));
+            if ("L".equals(handSelected)) {
                 lefthand.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_left_inactive));
             }
+            handSelected = "R";
         }else if (R.id.player_dialog_imageview_lefthand == v.getId()) {
             ImageView view = (ImageView) v;
-            if (view.getDrawable() != getResources().getDrawable(R.drawable.edit_handedness_left_active)) {
-                view.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_left_active));
+            view.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_left_active));
+            if ("R".equals(handSelected)) {
                 righthand.setImageDrawable(getResources().getDrawable(R.drawable.edit_handedness_right_inactive));
             }
-
+            handSelected = "L";
         }
     }
 

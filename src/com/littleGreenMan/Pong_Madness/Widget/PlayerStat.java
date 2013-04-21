@@ -27,6 +27,7 @@ public class PlayerStat extends LinearLayout {
     private TextView rank, points, wins, losses, played, rankTitle, pointsTitle, winsTitle, lossesTitle, playedTitle;
     private ImageView hand;
 
+
     public PlayerStat(Context context, Player player) {
         super(context);
         this.context = context;

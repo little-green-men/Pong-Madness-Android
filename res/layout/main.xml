@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/lobby_layout_main"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:background="@drawable/background">
+
+    <FrameLayout android:id="@+id/lobby_framelayout_fullscreen"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent">
+    </FrameLayout>
 
     <LinearLayout android:id="@+id/lobby_linearlayout_singledouble"
                   android:layout_width="wrap_content"
@@ -69,8 +74,13 @@
             android:background="@android:color/transparent"/>
     </LinearLayout>
 
-    <FrameLayout android:id="@+id/lobby_framelayout_fullscreen"
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent">
-    </FrameLayout>
-</FrameLayout>
+    <ImageView
+            android:id="@+id/lobby_imageview_soon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/soon"
+            android:layout_alignParentRight="true"
+            android:paddingRight="260dp"
+            android:visibility="invisible"/>
+
+</RelativeLayout>

@@ -2,7 +2,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/cell_add_lyt_main"
-                android:layout_margin="10dip"
+                android:layout_margin="10dp"
                 android:layout_width="@dimen/theplayers_width_addplayer"
                 android:layout_height="@dimen/theplayers_height_addplayer"
                 android:background="@drawable/player_add"
@@ -18,7 +18,7 @@
             android:background="@android:color/transparent"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:paddingBottom="12dip"
+            android:paddingBottom="12dp"
             android:focusableInTouchMode="true"
             android:imeOptions="actionGo"
             android:inputType="textPersonName"

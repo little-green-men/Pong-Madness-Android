@@ -7,17 +7,16 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.animation.*;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.*;
 
 public class Lobby extends Activity implements View.OnClickListener {
-    private FrameLayout mainLayout;
+
+    private RelativeLayout mainLayout;
     private ImageView quickgameImageView;
     private ImageView knockoutImageView;
     private ImageView leaderboardImageView;
     private ImageView theplayersImageView;
+    private ImageView coominSoonImage;
     private FrameLayout fullScreenFramelayout;
     private Button singleButton;
     private Button doubleButton;
@@ -26,6 +25,9 @@ public class Lobby extends Activity implements View.OnClickListener {
 
     private int animationDuration;
     private int paddleWidth;
+
+    private boolean isPaddleKnockOutBlack = false;
+    private boolean isPaddleQuickGameBlack = false;
 
     /** Called when the activity is first created. */
     @Override
@@ -43,9 +45,10 @@ public class Lobby extends Activity implements View.OnClickListener {
         singleButton = (Button)findViewById(R.id.lobby_button_single);
         doubleButton = (Button)findViewById(R.id.lobby_button_double);
         buttonsLayout = (LinearLayout) findViewById(R.id.lobby_linearlayout_singledouble);
-        mainLayout = (FrameLayout) findViewById(R.id.lobby_layout_main);
+        mainLayout = (RelativeLayout) findViewById(R.id.lobby_layout_main);
         paddlesLayout= (LinearLayout) findViewById(R.id.lobby_layout_paddles);
         fullScreenFramelayout = (FrameLayout) findViewById(R.id.lobby_framelayout_fullscreen);
+        coominSoonImage = (ImageView) findViewById(R.id.lobby_imageview_soon);
 
         fullScreenFramelayout.setVisibility(View.INVISIBLE);
 
@@ -56,6 +59,7 @@ public class Lobby extends Activity implements View.OnClickListener {
 
         //Add listener
         quickgameImageView.setOnClickListener(this);
+        knockoutImageView.setOnClickListener(this);
         fullScreenFramelayout.setOnClickListener(this);
         singleButton.setOnClickListener(this);
         theplayersImageView.setOnClickListener(this);
@@ -79,13 +83,24 @@ public class Lobby extends Activity implements View.OnClickListener {
         if (v.getId() == R.id.lobby_imageview_quickgame) {
             clickOnQuickGameAnimation();
             turnFirstPaddle();
-            makeButtonAppear();
             fullScreenFramelayout.bringToFront();
+            makeViewAppearOrDesappear(buttonsLayout);
+
+        } else if (v.getId() == R.id.lobby_imageview_knockout) {
+            clickOnKnockOutAnimation();
+            turnSecondPaddle();
+            fullScreenFramelayout.bringToFront();
+            makeViewAppearOrDesappear(coominSoonImage);
+
         } else if (v.getId() == R.id.lobby_button_single) {
+            Intent intent = new Intent(this, QuickGame.class);
+            intent.putExtra("gametype", QuickGame.GAME_MODE_SINGLE);
+            startActivity(intent);
 
         } else if (v.getId() == R.id.lobby_button_double) {
 
         } else if (v.getId() == R.id.lobby_framelayout_fullscreen) {
+
             paddlesLayout.bringToFront();
             fullScreenFramelayout.setVisibility(View.INVISIBLE);
             Interpolator interpolator = new Interpolator() {
@@ -101,24 +116,48 @@ public class Lobby extends Activity implements View.OnClickListener {
 
 
             Animation knockoutAnimationReverse = knockoutImageView.getAnimation();
-            knockoutAnimationReverse.setInterpolator(interpolator);
-            knockoutImageView.startAnimation(knockoutAnimationReverse);
+            if (knockoutAnimationReverse != null) {
+                knockoutAnimationReverse.setInterpolator(interpolator);
+                knockoutImageView.startAnimation(knockoutAnimationReverse);
+            }
+
+            Animation quickGameAnimationReverse = quickgameImageView.getAnimation();
+            if (quickGameAnimationReverse != null) {
+                quickGameAnimationReverse.setInterpolator(interpolator);
+                quickgameImageView.startAnimation(quickGameAnimationReverse);
+            }
 
             Animation theplayersAnimationReverse = theplayersImageView.getAnimation();
             theplayersAnimationReverse.setInterpolator(interpolator);
             theplayersImageView.startAnimation(theplayersAnimationReverse);
 
-            makeButtonDisappear();
+
+
+            if (isPaddleQuickGameBlack) {
+                turnFirstPaddle();
+                makeViewAppearOrDesappear(buttonsLayout);
+            }
+            if (isPaddleKnockOutBlack) {
+                turnSecondPaddle();
+                makeViewAppearOrDesappear(coominSoonImage);
+            }
         } else if (R.id.lobby_imageview_theplayers == v.getId()) {
             Intent intent = new Intent(this, ThePlayers.class);
             startActivity(intent);
         }
     }
 
-    private void makeButtonAppear() {
-        buttonsLayout.setVisibility(View.VISIBLE);
-        Animation fadeIn = new AlphaAnimation(0,1);
-        fadeIn.setAnimationListener(new Animation.AnimationListener() {
+    private void makeViewAppearOrDesappear(final View view) {
+        Animation fade;
+        final Boolean isInvisible = (view.getVisibility() == View.INVISIBLE);
+        if (isInvisible) {
+            view.setVisibility(View.VISIBLE);
+            fade = new AlphaAnimation(0,1);
+
+        } else {
+            fade = new AlphaAnimation(1,0);
+        }
+        fade.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
                 //To change body of implemented methods use File | Settings | File Templates.
@@ -126,7 +165,16 @@ public class Lobby extends Activity implements View.OnClickListener {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                buttonsLayout.bringToFront();
+                 if (isInvisible) {
+                    fullScreenFramelayout.setVisibility(View.VISIBLE);
+                    fullScreenFramelayout.bringToFront();
+                    view.bringToFront();
+                } else {
+                    view.setVisibility(View.INVISIBLE);
+                    fullScreenFramelayout.setVisibility(View.INVISIBLE);
+
+                }
+
             }
 
             @Override
@@ -134,34 +182,12 @@ public class Lobby extends Activity implements View.OnClickListener {
                 //To change body of implemented methods use File | Settings | File Templates.
             }
         });
-        fadeIn.setFillAfter(true);
-        fadeIn.setDuration(500);
+        fade.setFillAfter(true);
+        fade.setDuration(500);
 
-        buttonsLayout.startAnimation(fadeIn);
+        view.startAnimation(fade);
 
-    }
 
-    private void makeButtonDisappear() {
-        Animation fadeOut = new AlphaAnimation(1, 0);
-        fadeOut.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                buttonsLayout.setVisibility(View.INVISIBLE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-        });
-        fadeOut.setDuration(500);
-
-        buttonsLayout.startAnimation(fadeOut);
     }
 
     private void clickOnQuickGameAnimation() {
@@ -208,12 +234,134 @@ public class Lobby extends Activity implements View.OnClickListener {
         knockoutImageView.startAnimation(knockoutAnimationSet);
     }
 
-    private void turnFirstPaddle() {
-        applyRotation(quickgameImageView, 0, 90);
+    private void clickOnKnockOutAnimation() {
+        fullScreenFramelayout.setVisibility(View.VISIBLE);
+        fullScreenFramelayout.bringToFront();
+
+        //theplayer animation
+        theplayersImageView.bringToFront();
+        AnimationSet thePlayerAnimationSet = new AnimationSet(true);
+        TranslateAnimation thePlayerTranslation = new TranslateAnimation(0, Math.round(0.2*paddleWidth), 0, -Math.round(0.1 * paddleWidth));
+        RotateAnimation thePlayerRotation = new RotateAnimation(0, 25, theplayersImageView.getWidth()/2.0f, theplayersImageView.getHeight()/2.0f);
+        thePlayerAnimationSet.addAnimation(thePlayerTranslation);
+        thePlayerAnimationSet.addAnimation(thePlayerRotation);
+        thePlayerAnimationSet.setDuration(animationDuration);
+        thePlayerAnimationSet.setFillAfter(true);
+
+
+        //quickgame animation
+        RotateAnimation quickgameRotation = new RotateAnimation(0, -35, quickgameImageView.getWidth()/2.0f, quickgameImageView.getHeight()/2.0f);
+        quickgameRotation.setDuration(animationDuration);
+        quickgameRotation.setFillAfter(true);
+
+        //leaderboard animation
+        leaderboardImageView.bringToFront();
+        AnimationSet leaderboardAnimationSet = new AnimationSet(true);
+        double leaderboardAngle = -Math.PI/10;
+        TranslateAnimation leaderboardTranslation = new TranslateAnimation(0, Math.round(1.4*paddleWidth), 0, Math.round(1.1 * paddleWidth * Math.tan(leaderboardAngle)));
+        RotateAnimation leaderboardRotation = new RotateAnimation(0, Math.round(leaderboardAngle*180/Math.PI), leaderboardImageView.getWidth()/2.0f, leaderboardImageView.getHeight()/2.0f);
+        leaderboardAnimationSet.addAnimation(leaderboardTranslation);
+        leaderboardAnimationSet.addAnimation(leaderboardRotation);
+        leaderboardAnimationSet.setDuration(animationDuration);
+        leaderboardAnimationSet.setFillAfter(true);
+
+
+
+        quickgameImageView.startAnimation(quickgameRotation);
+        leaderboardImageView.startAnimation(leaderboardAnimationSet );
+        theplayersImageView.startAnimation(thePlayerAnimationSet);
+
 
     }
 
-    private void applyRotation(final View view, float start, float end) {
+    private void turnFirstPaddle() {
+        Animation.AnimationListener listener = new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                if (isPaddleQuickGameBlack) {
+                    isPaddleQuickGameBlack = false;
+                    quickgameImageView.setImageDrawable(getResources().getDrawable(R.drawable.paddle_quickgame));
+                } else {
+                    isPaddleQuickGameBlack = true;
+                    quickgameImageView.setImageDrawable(getResources().getDrawable(R.drawable.paddle_quickgame_active));
+
+                }
+                Rotation3dAnimation rotationSuite = null;
+                if (isPaddleQuickGameBlack) {
+                    rotationSuite = new Rotation3dAnimation(-90, 0, quickgameImageView.getWidth() / 2.0f, quickgameImageView.getHeight() / 2.0f, 0, true);
+                    rotationSuite.setDuration(200);
+                } else {
+                    rotationSuite = new Rotation3dAnimation(90, 0, quickgameImageView.getWidth() / 2.0f, quickgameImageView.getHeight() / 2.0f, 0, true);
+                    rotationSuite.setDuration(200);
+                }
+                quickgameImageView.startAnimation(rotationSuite);
+            }
+
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        };
+        if (isPaddleQuickGameBlack) {
+            applyRotation(quickgameImageView, 0, -90, listener);
+        } else {
+            applyRotation(quickgameImageView, 0, 90, listener);
+        }
+
+
+    }
+
+    private void turnSecondPaddle() {
+        Animation.AnimationListener listener = new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                if (isPaddleKnockOutBlack) {
+                    isPaddleKnockOutBlack = false;
+                    knockoutImageView.setImageDrawable(getResources().getDrawable(R.drawable.paddle_knockout));
+                } else {
+                    isPaddleKnockOutBlack = true;
+                    knockoutImageView.setImageDrawable(getResources().getDrawable(R.drawable.paddle_knockout_active));
+
+                }
+
+                Rotation3dAnimation rotationSuite = null;
+                if (isPaddleQuickGameBlack) {
+                    rotationSuite = new Rotation3dAnimation(-90, 0, knockoutImageView.getWidth() / 2.0f, knockoutImageView.getHeight() / 2.0f, 0, true);
+                    rotationSuite.setDuration(200);
+                } else {
+                    rotationSuite = new Rotation3dAnimation(90, 0, knockoutImageView.getWidth() / 2.0f, knockoutImageView.getHeight() / 2.0f, 0, true);
+                    rotationSuite.setDuration(200);
+                }
+
+                knockoutImageView.startAnimation(rotationSuite);
+            }
+
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        };
+        if (isPaddleKnockOutBlack) {
+            applyRotation(knockoutImageView, 0, -90, listener);
+        } else {
+            applyRotation(knockoutImageView, 0, 90, listener);
+        }
+
+    }
+
+    private void applyRotation(final View view, float start, float end, Animation.AnimationListener listener) {
         // Find the center of the container
         final float centerX = view.getWidth() / 2.0f;
         final float centerY = view.getHeight() / 2.0f;
@@ -223,27 +371,7 @@ public class Lobby extends Activity implements View.OnClickListener {
         final Rotation3dAnimation rotation =
                 new Rotation3dAnimation(start, end, centerX, centerY, 0, true);
         rotation.setDuration(200);
-        rotation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-
-                final Rotation3dAnimation rotationSuite =
-                        new Rotation3dAnimation(-90, 0, centerX, centerY, 0, true);
-                rotationSuite.setDuration(200);
-                view.startAnimation(rotationSuite);
-            }
-
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-        });
+        rotation.setAnimationListener(listener);
 
         view.startAnimation(rotation);
     }

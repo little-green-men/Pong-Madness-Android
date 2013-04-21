@@ -14,12 +14,12 @@ import java.util.List;
  */
 public class PlayerClient {
 
-    public static void addPlayerWithName(Player newPlayer) {
+    public static void addPlayer(Player newPlayer) {
         DatabaseManager.getDaoSession().getPlayerDao().insert(newPlayer);
     }
 
     public static void updatePlayer(Player player) {
-        DatabaseManager.getDaoSession().getPlayerDao().insertOrReplace(player);
+        DatabaseManager.getDaoSession().getPlayerDao().update(player);
     }
 
     public static int getRankOfPlayer(Player player) {
