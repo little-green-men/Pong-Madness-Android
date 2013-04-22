@@ -1,6 +1,6 @@
 package com.littleGreenMan.Pong_Madness.client;
 
-import com.littleGreenMan.Pong_Madness.DatabaseManager;
+import com.littleGreenMan.Pong_Madness.utils.DatabaseManager;
 import com.littleGreenMan.Pong_Madness.model.Player;
 
 import java.util.List;

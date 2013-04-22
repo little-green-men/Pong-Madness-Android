@@ -35,7 +35,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42cc16ca-80ae-4571-8f71-900fd4d45b2f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/menu_quickgame.xml" afterPath="$PROJECT_DIR$/res/menu/menu_quickgame.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/DatabaseManager.java" afterPath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/utils/DatabaseManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/FixedGridLayout.java" afterPath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/utils/FixedGridLayout.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/FontTools.java" afterPath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/utils/FontTools.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/QuickGame.java" afterPath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/quickgame/QuickGame.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Rotation3dAnimation.java" afterPath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/utils/Rotation3dAnimation.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/ThePlayers.java" afterPath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/theplayers/ThePlayers.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellPlayer.java" afterPath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellPlayer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Lobby.java" afterPath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Lobby.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/client/PlayerClient.java" afterPath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/client/PlayerClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerStat.java" afterPath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/PlayerStat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/PongMadnessApplication.java" afterPath="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/PongMadnessApplication.java" />
     </list>
     <ignored path="Pong Madness.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -130,7 +141,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/ThePlayers.java" line="31" class="com.littleGreenMan.Pong_Madness.ThePlayers" package="com.littleGreenMan.Pong_Madness">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/theplayers/ThePlayers.java" line="33" class="com.littleGreenMan.Pong_Madness.ThePlayers" package="com.littleGreenMan.Pong_Madness">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -205,7 +216,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellPlayer.java" line="88" class="com.littleGreenMan.Pong_Madness.Widget.CellPlayer" package="com.littleGreenMan.Pong_Madness.Widget">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellPlayer.java" line="87" class="com.littleGreenMan.Pong_Madness.Widget.CellPlayer" package="com.littleGreenMan.Pong_Madness.Widget">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -232,11 +243,11 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="QuickGame.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/QuickGame.java">
+        <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/quickgame/QuickGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="130" column="80" selection-start="4309" selection-end="4309" vertical-scroll-proportion="0.0">
+            <state line="131" column="80" selection-start="4355" selection-end="4355" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#1126#1134#0" expanded="true" />
+                <element signature="e#1172#1180#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -267,9 +278,9 @@
         </entry>
       </file>
       <file leaf-file-name="ThePlayers.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/ThePlayers.java">
+        <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/theplayers/ThePlayers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="38" selection-start="1758" selection-end="1758" vertical-scroll-proportion="0.0">
+            <state line="53" column="0" selection-start="1873" selection-end="1873" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -296,19 +307,19 @@
       <file leaf-file-name="CellPlayer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="40" selection-start="3221" selection-end="3245" vertical-scroll-proportion="0.58899677">
+            <state line="104" column="40" selection-start="3227" selection-end="3251" vertical-scroll-proportion="0.58899677">
               <folding>
-                <element signature="e#1234#1385#0" expanded="true" />
-                <element signature="e#1378#1379#0" expanded="true" />
+                <element signature="e#1240#1391#0" expanded="true" />
+                <element signature="e#1384#1385#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="FixedGridLayout.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/FixedGridLayout.java">
+        <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/utils/FixedGridLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="32" selection-start="2379" selection-end="2379" vertical-scroll-proportion="0.0">
+            <state line="63" column="32" selection-start="2385" selection-end="2385" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -317,7 +328,7 @@
       <file leaf-file-name="Lobby.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Lobby.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="42" selection-start="3042" selection-end="3042" vertical-scroll-proportion="0.0">
+            <state line="73" column="42" selection-start="3286" selection-end="3286" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -353,10 +364,10 @@
         <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Lobby.java" />
         <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/ThePlayers.java" />
         <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/delegate/SelectPlayerDelegate.java" />
-        <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellPlayer.java" />
         <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/QuickGame.java" />
         <option value="$PROJECT_DIR$/res/menu/menu_quickgame.xml" />
         <option value="$PROJECT_DIR$/res/layout/game_single.xml" />
+        <option value="$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellPlayer.java" />
       </list>
     </option>
   </component>
@@ -482,37 +493,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Widget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Pong-Madness-Android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Pong-Madness-Android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="littleGreenMan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Pong_Madness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="delegate" />
+              <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -839,7 +820,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="700" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21961102" sideWeight="0.62068963" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21231766" sideWeight="0.62068963" order="2" side_tool="false" content_ui="tabs" />
@@ -858,7 +839,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32868218" sideWeight="0.67681897" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17341977" sideWeight="0.62068963" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17341977" sideWeight="0.62068963" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37931034" sideWeight="0.54051864" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -978,16 +959,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/FixedGridLayout.java">
+    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/utils/FixedGridLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="32" selection-start="2379" selection-end="2379" vertical-scroll-proportion="0.0">
+        <state line="63" column="32" selection-start="2385" selection-end="2385" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Lobby.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="42" selection-start="3042" selection-end="3042" vertical-scroll-proportion="0.0">
+        <state line="73" column="42" selection-start="3286" selection-end="3286" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -999,18 +980,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/QuickGame.java">
+    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/quickgame/QuickGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="80" selection-start="4309" selection-end="4309" vertical-scroll-proportion="0.0">
+        <state line="131" column="80" selection-start="4355" selection-end="4355" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#1126#1134#0" expanded="true" />
+            <element signature="e#1172#1180#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/ThePlayers.java">
+    <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/theplayers/ThePlayers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="38" selection-start="1758" selection-end="1758" vertical-scroll-proportion="0.0">
+        <state line="53" column="0" selection-start="1873" selection-end="1873" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1051,10 +1032,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/littleGreenMan/Pong_Madness/Widget/CellPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="40" selection-start="3221" selection-end="3245" vertical-scroll-proportion="0.58899677">
+        <state line="104" column="40" selection-start="3227" selection-end="3251" vertical-scroll-proportion="0.58899677">
           <folding>
-            <element signature="e#1234#1385#0" expanded="true" />
-            <element signature="e#1378#1379#0" expanded="true" />
+            <element signature="e#1240#1391#0" expanded="true" />
+            <element signature="e#1384#1385#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
-import com.littleGreenMan.Pong_Madness.FontTools;
+import com.littleGreenMan.Pong_Madness.utils.FontTools;
 import com.littleGreenMan.Pong_Madness.R;
 import com.littleGreenMan.Pong_Madness.delegate.SelectPlayerDelegate;
 import com.littleGreenMan.Pong_Madness.model.Player;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.littleGreenMan.Pong_Madness;
+package com.littleGreenMan.Pong_Madness.utils;
 
 import android.content.Context;
 import android.util.TypedValue;

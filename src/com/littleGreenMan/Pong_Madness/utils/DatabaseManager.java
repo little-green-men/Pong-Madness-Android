@@ -1,4 +1,4 @@
-package com.littleGreenMan.Pong_Madness;
+package com.littleGreenMan.Pong_Madness.utils;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

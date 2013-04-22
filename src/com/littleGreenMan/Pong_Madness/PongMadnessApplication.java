@@ -1,6 +1,7 @@
 package com.littleGreenMan.Pong_Madness;
 
 import android.app.Application;
+import com.littleGreenMan.Pong_Madness.utils.DatabaseManager;
 
 /**
  * Created with IntelliJ IDEA.

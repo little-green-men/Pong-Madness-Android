@@ -1,4 +1,4 @@
-package com.littleGreenMan.Pong_Madness;
+package com.littleGreenMan.Pong_Madness.theplayers;
 
 import android.animation.LayoutTransition;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
+import com.littleGreenMan.Pong_Madness.utils.FixedGridLayout;
+import com.littleGreenMan.Pong_Madness.R;
 import com.littleGreenMan.Pong_Madness.Widget.CellAddPlayer;
 import com.littleGreenMan.Pong_Madness.Widget.CellPlayer;
 import com.littleGreenMan.Pong_Madness.Widget.PlayerDialogFragment;

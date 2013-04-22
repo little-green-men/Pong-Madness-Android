@@ -1,12 +1,13 @@
-package com.littleGreenMan.Pong_Madness;
+package com.littleGreenMan.Pong_Madness.quickgame;
 
 import android.animation.LayoutTransition;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.*;
 import android.widget.ScrollView;
+import com.littleGreenMan.Pong_Madness.utils.FixedGridLayout;
+import com.littleGreenMan.Pong_Madness.R;
 import com.littleGreenMan.Pong_Madness.Widget.CellPlayer;
-import com.littleGreenMan.Pong_Madness.Widget.PlayerDialogFragment;
 import com.littleGreenMan.Pong_Madness.client.PlayerClient;
 import com.littleGreenMan.Pong_Madness.delegate.SelectPlayerDelegate;
 import com.littleGreenMan.Pong_Madness.model.Player;
