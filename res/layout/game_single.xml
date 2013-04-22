@@ -3,6 +3,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@drawable/game_wood_background">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="580dip"
+        android:background="@drawable/game_table_background"
+        ></LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
 
+    >
+        <ViewSwitcher
+            android:id="@+id/game_single_switcher"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:inAnimation="@android:anim/slide_in_left"
+            android:outAnimation="@android:anim/slide_out_right">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/game_switch_11"/>
+
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/game_switch_21"/>
+
+            </ViewSwitcher>
+
+        <Button
+            android:layout_width="180dip"
+            android:layout_height="72dip"
+            android:background="@drawable/game_start_button"
+            android:text="start"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/game_single_switcher"
+            android:layout_margin="10dip"
+            android:textSize="38dip"/>
+
+    </RelativeLayout>
 </LinearLayout>
