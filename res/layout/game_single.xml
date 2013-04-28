@@ -7,46 +7,103 @@
               android:background="@drawable/game_wood_background">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="580dip"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center"
         android:background="@drawable/game_table_background"
-        ></LinearLayout>
+        >
+        <com.littleGreenMan.Pong_Madness.Widget.PlayerStat
+                android:id="@+id/game_single_playerA"
+                android:layout_marginTop="-15dip"
+                android:layout_height="400dip"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                />
+        <com.littleGreenMan.Pong_Madness.Widget.PlayerStat
+                android:id="@+id/game_single_playerB"
+                android:layout_height="400dip"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:layout_marginTop="-15dip"
+                />
+        </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="6"
         android:gravity="center_vertical"
 
     >
-        <ViewSwitcher
+        <ImageView
             android:id="@+id/game_single_switcher"
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
-            android:inAnimation="@android:anim/slide_in_left"
-            android:outAnimation="@android:anim/slide_out_right">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/game_switch_11"/>
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/game_switch_21"/>
-
-            </ViewSwitcher>
+            android:src="@drawable/game_switch_11"/>
 
         <Button
-            android:layout_width="180dip"
-            android:layout_height="72dip"
+            android:id="@+id/game_single_button_start"
+            android:layout_width="150dip"
+            android:layout_height="55dip"
             android:background="@drawable/game_start_button"
             android:text="start"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/game_single_switcher"
             android:layout_margin="10dip"
             android:textSize="38dip"/>
+        <Chronometer
+                android:id="@+id/game_single_chronometer"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/game_single_switcher"
+                android:layout_margin="10dip"
+                android:textSize="50sp"
+                android:textColor="@android:color/black"
+                android:visibility="invisible"
+        />
+        <LinearLayout
+                android:id="@+id/game_single_left_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="invisible"
 
+            >
+            <ImageView
+                    android:id="@+id/game_single_left_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/game_interface_left_plus"/>
+            <ImageView
+                    android:id="@+id/game_single_left_minus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/game_interface_left_minus"/>
+            </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/game_single_right_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentRight="true"
+                android:visibility="invisible"
+            >
+            <ImageView
+                    android:id="@+id/game_single_right_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/game_interface_right_plus"
+                    android:layout_gravity="right"/>
+            <ImageView
+                    android:id="@+id/game_single_right_minus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/game_interface_right_minus"
+                    android:layout_gravity="right"/>
+        </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

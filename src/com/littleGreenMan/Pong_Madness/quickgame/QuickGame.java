@@ -1,6 +1,7 @@
 package com.littleGreenMan.Pong_Madness.quickgame;
 
 import android.animation.LayoutTransition;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.*;
@@ -35,7 +36,7 @@ public class QuickGame extends FragmentActivity implements SelectPlayerDelegate{
     private int maxPlayerToSelect = 2;
     private int gamemode;
 
-    private List<Player> playersSelected = new ArrayList<Player>();
+    private ArrayList<Player> playersSelected = new ArrayList<Player>();
 
     public static int GAME_MODE_SINGLE = 0;
     public static int GAME_MODE_DOUBLE = 1;
@@ -129,6 +130,8 @@ public class QuickGame extends FragmentActivity implements SelectPlayerDelegate{
     }
 
     private void clickOnPlay() {
-        //To change body of created methods use File | Settings | File Templates
+        Intent intent = new Intent(this, GameSingle.class);
+        intent.putExtra(Player.IDENTIFIER, playersSelected);
+        startActivity(intent);
     }
 }

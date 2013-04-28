@@ -2,8 +2,8 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="325dp"
-              android:layout_height="418dp"
+              android:layout_width="@dimen/player_stat_height"
+              android:layout_height="@dimen/player_stat_width"
         android:background="@drawable/player_card_big">
     <ImageView
             android:id="@+id/player_stat_imageview_picture"

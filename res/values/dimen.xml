@@ -9,4 +9,8 @@
     <!-- cell player-->
     <dimen name="cellplayer_textsize_name">18dip</dimen>
     <dimen name="cellplayer_textsize_date">10dip</dimen>
+
+    <!--player stat card-->
+    <dimen name="player_stat_height">325dip</dimen>
+    <dimen name="player_stat_width">418dip</dimen>
 </resources>
