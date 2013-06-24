@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pong Madness</string>
+
+    <!-- Game single -->
+    <string name="start">start</string>
+    <string name="finish">finish</string>
 </resources>

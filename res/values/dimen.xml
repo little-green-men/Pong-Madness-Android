@@ -13,4 +13,7 @@
     <!--player stat card-->
     <dimen name="player_stat_height">325dip</dimen>
     <dimen name="player_stat_width">418dip</dimen>
+
+    <!-- game - single -->
+    <dimen name="table_heigth">552dip</dimen>
 </resources>

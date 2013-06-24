@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="libs1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/PongModelGenerator/libs/greendao-generator-1.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/PongModelGenerator/libs/freemarker.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
